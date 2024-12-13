@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "film_id": 1,
+        "salle_id": 2,
+        "date_debut": "2024-12-14",
+        "date_fin": "2024-12-16",
+        "jours_semaine": ["Friday", "Saturday"],
+        "heure_debut": "20:00"
+    },
+    {
+        "id": 2,
+        "film_id": 2,
+        "salle_id": 1,
+        "date_debut": "2024-12-15",
+        "date_fin": "2024-12-17",
+        "jours_semaine": ["Saturday", "Sunday"],
+        "heure_debut": "18:00"
+    }
+]
