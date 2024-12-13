@@ -1,4 +1,5 @@
 # APIREST_cinema
+test
 Dans ce projet, vous devez proposer une application Web qui fournit les services REST ci-dessous. Ils
 concernent les projections et la programmation de films dans les différentes salles de cinéma
 parisiennes. Pour avoir une meilleure idée de ce que nous attendons de vous en tant que projet,
