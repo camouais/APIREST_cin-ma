@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "nom": "Salle 1",
+        "adresse": "123 Rue Paris 75001",
+        "ville": "Paris"
+    },
+    {
+        "id": 2,
+        "nom": "Salle 2",
+        "adresse": "456 Boulevard Paris 75002",
+        "ville": "Paris"
+    }
+]

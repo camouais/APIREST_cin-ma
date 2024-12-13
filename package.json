@@ -1,5 +1,5 @@
 {
-  "name": "node-express-api-sample",
+  "name": "express-api-sample",
   "version": "1.0.0",
   "description": "A node js api sample project",
   "main": "index.js",
@@ -14,5 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.2"
-  }
+  },
+  "devDependencies": {},
+  "keywords": []
 }
