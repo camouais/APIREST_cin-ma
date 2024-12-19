@@ -22,52 +22,57 @@ est en fait un service web qui affiche les détails des films (donnés dans la q
 --------------------------------------
 Exemple de structure de fichiers :
 
-/project-root
-|-- /backend
-|   |-- /config
-|   |   |-- db.config.js       # Database configuration
-|   |   |-- server.config.js   # Server-related configuration (e.g., ports)
-|   |
-|   |-- /models                # Database Models (entities)
-|   |   |-- user.model.js      # Example: User model
-|   |   |-- product.model.js   # Example: Product model
-|   |
-|   |-- /repositories          # Data access layer
-|   |   |-- user.repository.js # Queries for User
-|   |   |-- product.repository.js # Queries for Product
-|   |
-|   |-- /services              # Business logic
-|   |   |-- user.service.js    # Business logic for User
-|   |   |-- product.service.js # Business logic for Product
-|   |
-|   |-- /controllers           # API Endpoints
-|   |   |-- user.controller.js # REST routes for User
-|   |   |-- product.controller.js # REST routes for Product
-|   |
-|   |-- /routes                # Route definitions
-|   |   |-- api.routes.js      # Combine all routes
-|   |
-|   |-- server.js              # Entry point for the backend
-|
-|-- /frontend
-|   |-- /public                # Static files (CSS, images, etc.)
-|   |   |-- index.html         # Main HTML file
-|   |   |-- style.css          # Global CSS
-|   |
-|   |-- /src                   # Frontend logic
-|   |   |-- /components        # Reusable components
-|   |   |   |-- Header.js      # Example: Header component
-|   |   |   |-- Footer.js      # Example: Footer component
-|   |   |
-|   |   |-- /pages             # Page views
-|   |   |   |-- HomePage.js    # Home Page
-|   |   |   |-- AboutPage.js   # About Page
-|   |   |
-|   |   |-- App.js             # Main app logic
-|   |   |-- index.js           # Entry point for React (or other frontend framework)
-|
-|-- /database
-|   |-- init.sql               # SQL script to initialize database (if using relational DB)
-|
-|-- README.md                  # Documentation
-|-- package.json               # Dependencies and scripts for Node.js
+/cinema-app
+├── /backend
+│   ├── /controllers
+│   │   ├── cinema.controller.js
+│   │   ├── movie.controller.js
+│   │   └── schedule.controller.js
+│   ├── /services
+│   │   ├── cinema.service.js
+│   │   ├── movie.service.js
+│   │   └── schedule.service.js
+│   ├── /data-access
+│   │   ├── cinema.repository.js
+│   │   ├── movie.repository.js
+│   │   └── schedule.repository.js
+│   ├── /models
+│   │   ├── cinema.model.js
+│   │   ├── movie.model.js
+│   │   └── schedule.model.js
+│   ├── /routes
+│   │   ├── cinema.routes.js
+│   │   ├── movie.routes.js
+│   │   └── schedule.routes.js
+│   ├── /config
+│   │   ├── database.js
+│   │   └── appConfig.js
+│   ├── app.js
+│   ├── package.json
+│   └── README.md
+├── /frontend
+│   ├── /src
+│   │   ├── /components
+│   │   │   ├── MovieDetails.js
+│   │   │   ├── MoviesByCity.js
+│   │   │   ├── MovieForm.js
+│   │   │   └── CinemaMap.js
+│   │   ├── /pages
+│   │   │   ├── Home.js
+│   │   │   ├── MoviePage.js
+│   │   │   └── AddMovie.js
+│   │   ├── /api
+│   │   │   ├── moviesApi.js
+│   │   │   ├── cinemasApi.js
+│   │   │   └── schedulesApi.js
+│   │   ├── App.js
+│   │   ├── index.js
+│   │   └── package.json
+│   └── public
+│       ├── index.html
+│       └── styles.css
+├── /database
+│   ├── init.sql
+│   ├── seed.sql
+│   └── migrations/
+└── README.md
