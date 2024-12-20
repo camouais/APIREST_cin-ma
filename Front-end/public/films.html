@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Films</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+<h1>Film List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Director</th>
+    </tr>
+    </thead>
+    <tbody id="filmTableBody">
+    <!-- Rows will be dynamically added here -->
+    </tbody>
+</table>
+
+<script>
+    // Fetch films from the API and populate the table
+    async function fetchFilms() {
+        try {
+            const response = await fetch('/api/films'); // Call the API
+            const data = await response.json(); // Parse JSON response
+
+            if (data.success) {
+                const films = data.data; // Extract the film data
+                const tableBody = document.getElementById('filmTableBody');
+                tableBody.innerHTML = ''; // Clear existing content
+
+                // Dynamically create table rows for each film
+                films.forEach(film => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                            <td>${film.Titre}</td>
+                            <td>${film.Annee}</td>
+                            <td>${film.Nom_Realisateur}</td>
+                        `;
+                    tableBody.appendChild(row);
+                });
+            } else {
+                console.error('Failed to fetch films:', data.message);
+            }
+        } catch (error) {
+            console.error('Error fetching films:', error);
+        }
+    }
+
+    // Call the function when the page loads
+    fetchFilms();
+</script>
+
+</body>
+</html>

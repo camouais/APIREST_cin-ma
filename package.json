@@ -1,8 +1,8 @@
 {
-  "name": "express-api-sample",
+  "name": "express-api-rest",
   "version": "1.0.0",
-  "description": "A node js api sample project",
-  "main": "index.js",
+  "description": "A node js api rest project",
+  "main": "Back-end/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,8 +13,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "mysql2": "^3.11.5"
   },
-  "devDependencies": {},
   "keywords": []
 }
