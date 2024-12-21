@@ -1,5 +1,12 @@
 -- remplacer rem commentaires sous Oracle par --
 
+
+-- Création de la base de données 'REST_API'
+DROP DATABASE IF EXISTS REST_API;
+CREATE DATABASE REST_API;
+USE REST_API;
+
+
 -- Structure de la table 'Artiste'
 
 
