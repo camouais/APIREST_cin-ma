@@ -22,55 +22,32 @@
             background-color: #f4f4f4;
         }
     </style>
+    <script src="films.js"></script>
 </head>
 <body>
-<h1>Film List</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Title</th>
-        <th>Year</th>
-        <th>Director</th>
-    </tr>
-    </thead>
-    <tbody id="filmTableBody">
-    <!-- Rows will be dynamically added here -->
-    </tbody>
-</table>
+    <h1>Film List</h1>
+    <!-- button that fetches films only if clicked -->
+    <button onclick="fetchFilms()">Fetch Films</button>
+    <table>
+        <thead id="filmTableHead">
+        </thead>
+        <tbody id="filmTableBody">
+        <!-- Rows will be dynamically added here -->
+        </tbody>
+    </table>
+    <h1>Add a New Film</h1>
+    <form id="filmForm" action="/api/filmcreate" method="POST">
+        <label for="Titre">Title:</label>
+        <input type="text" id="Titre" name="Titre" required><br><br>
 
-<script>
-    // Fetch films from the API and populate the table
-    async function fetchFilms() {
-        try {
-            const response = await fetch('/api/films'); // Call the API
-            const data = await response.json(); // Parse JSON response
+        <label for="Annee">Year:</label>
+        <input type="number" id="Annee" name="Annee" required><br><br>
 
-            if (data.success) {
-                const films = data.data; // Extract the film data
-                const tableBody = document.getElementById('filmTableBody');
-                tableBody.innerHTML = ''; // Clear existing content
+        <label for="Nom_Realisateur">Director:</label>
+        <input type="text" id="Nom_Realisateur" name="Nom_Realisateur" required><br><br>
 
-                // Dynamically create table rows for each film
-                films.forEach(film => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                            <td>${film.Titre}</td>
-                            <td>${film.Annee}</td>
-                            <td>${film.Nom_Realisateur}</td>
-                        `;
-                    tableBody.appendChild(row);
-                });
-            } else {
-                console.error('Failed to fetch films:', data.message);
-            }
-        } catch (error) {
-            console.error('Error fetching films:', error);
-        }
-    }
-
-    // Call the function when the page loads
-    fetchFilms();
-</script>
+        <button type="submit" onclick="createFilm()">Add Film</button>
+    </form>
 
 </body>
 </html>

@@ -69,11 +69,10 @@ INSERT INTO Cinema VALUES( 'Halles', '1', 'Forum des Halles');
 
 
 CREATE TABLE Film (
-   ID_film decimal(10,0) DEFAULT '0' NOT NULL,
+   ID_film INT AUTO_INCREMENT PRIMARY KEY,
    Titre varchar(30),
    Annee decimal(4,0),
-   Nom_Realisateur varchar(20),
-   PRIMARY KEY (ID_film)
+   Nom_Realisateur varchar(20)
 );
 
 
