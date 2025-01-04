@@ -23,61 +23,22 @@ est en fait un service web qui affiche les détails des films (donnés dans la q
 Exemple de structure de fichiers :
 
 /cinema-app  
-├── /backend  
-│   ├── /controllers  
-│   │   ├── cinema.controller.js  
-│   │   ├── movie.controller.js  
-│   │   └── schedule.controller.js  
-│   ├── /services  
-│   │   ├── cinema.service.js  
-│   │   ├── movie.service.js  
-│   │   └── schedule.service.js  
-│   ├── /data-access  
-│   │   ├── cinema.repository.js  
-│   │   ├── movie.repository.js  
-│   │   └── schedule.repository.js  
-│   ├── /models  
-│   │   ├── cinema.model.js  
-│   │   ├── movie.model.js  
-│   │   └── schedule.model.js  
-│   ├── /routes  
-│   │   ├── cinema.routes.js  
-│   │   ├── movie.routes.js  
-│   │   └── schedule.routes.js  
-│   ├── /config  
-│   │   ├── database.js  
-│   │   └── appConfig.js  
-│   ├── app.js  
-│   ├── package.json  
-│   └── README.md  
-├── /frontend  
-│   ├── /src  
-│   │   ├── /components  
-│   │   │   ├── MovieDetails.js  
-│   │   │   ├── MoviesByCity.js  
-│   │   │   ├── MovieForm.js  
-│   │   │   └── CinemaMap.js  
-│   │   ├── /pages  
-│   │   │   ├── Home.js  
-│   │   │   ├── MoviePage.js  
-│   │   │   └── AddMovie.js  
-│   │   ├── /api  
-│   │   │   ├── moviesApi.js  
-│   │   │   ├── cinemasApi.js  
-│   │   │   └── schedulesApi.js  
-│   │   ├── App.js  
-│   │   ├── index.js  
-│   │   └── package.json  
-│   └── public  
-│       ├── index.html  
-│       └── styles.css  
-├── /database  
-│   ├── init.sql  
-│   ├── seed.sql  
-│   └── migrations/  
+├── /Back-end  
+│   ├── /Config  
+│   │   ├── db.config.js  
+│   │   └── jwtconfig.js  
+│   ├── /Controller  
+│   │   ├── authController.js  
+│   │   ├── filmController.js  
+│   │   └── projectionController.js  
+│   ├── /Middleware
+│   ├── /Models  (Contient la structure des données de la base de données)
+│   ├── index.js  (Fichier principal du backend, contient les routes)
+├── /frontend  (a voir)
 └── README.md
 
 --------------------------------------
+
 ## Dépendances
 
 ### Node.js
@@ -90,10 +51,12 @@ J'ai rajouté un `.gitignore` pour ignorer le dossier `node_modules`.
 
 ### Base de données
 
-Pour ce projet, nous vous devez avoir une base de données SQL sur le port par défaut (3306) avec un utilisateur `root` et un mot de passe `rootroot`.  
+Pour ce projet, nous vous devez avoir une base de données SQL.  
+Vous pouvez configurer la connexion à la base de données dans le fichier `db.config.js` dans le dossier `Back-end/Config`. 
 Initialisez la base de données avec le fichier `init.sql` dans le dossier `Back-end/Database`.
 
 --------------------------------------
+
 ## Lancer le projet
 
 Pour lancer le Backend, vous devez simplement exécuter `node .\Back-end\index.js` et d'avoir la base de données de lancée.

@@ -246,8 +246,3 @@ CREATE TABLE Utilisateur (
     ID_cinema INT,                                 
     FOREIGN KEY (ID_cinema) REFERENCES Cinema(ID_cinema)
 );
-INSERT INTO Utilisateur (Nom, Prenom, Email, Mot_de_passe, Role, ID_cinema) 
-VALUES 
-    ('Dupont', 'Jean', 'jean.dupont@example.com', 'motdepassehashé', 'admin', 1),
-    ('Durand', 'Marie', 'marie.durand@example.com', 'motdepassehashé', 'proprietaire', 2);
-INSERT INTO Utilisateur VALUES( 'Halles', '3', '3', '9.99', '9.99', '3');

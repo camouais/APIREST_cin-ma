@@ -1,54 +1,52 @@
 // /controllers/authController.js
-const express = require('express');
-const router = express.Router();
-const authService = require('../Service/authService');
+const db = require("../Models");
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+
+const jwtConfig = require('../Config/jwt.config');
+
+const Utilisateur = db.Utilisateur;
 
 // Route pour l'authentification (connexion de l'utilisateur)
-router.post('/login', async (req, res) => {
+const login = async (req, res) => {
     const { email, password } = req.body;
-
-    console.log('Received login request:', email); // Ajoutez ce log pour vérifier que la requête arrive bien
-
     try {
-        const user = await authService.authenticateUser(email, password);
-        res.status(200).json({
-            success: true,
-            message: 'Authentification réussie',
-            user: {
-                id: user.ID_utilisateur,
-                nom: user.Nom,
-                prenom: user.Prenom,
-                role: user.Role
-            }
+        const utilisateur = await Utilisateur.findOne({ where: { Email: email } });
+        if (!utilisateur) {
+            return res.status(404).json({ message: 'Utilisateur non trouvé' });
+        }
+        const isPasswordValid = await bcrypt.compare(password, utilisateur.Mot_de_passe);
+        if (!isPasswordValid) {
+            return res.status(401).json({ message: 'Mot de passe incorrect' });
+        }
+        const token = jwt.sign({ id: utilisateur.ID_utilisateur, role: utilisateur.Role }, jwtConfig.secret, {
+            expiresIn: jwtConfig.expiresIn,
         });
+        res.status(200).json({ token });
     } catch (error) {
-        console.error('Error during authentication:', error);
-        res.status(401).json({
-            success: false,
-            message: error.message
-        });
+        console.error('Error logging in:', error);
+        res.status(500).json({ message: 'Erreur serveur', error });
     }
-});
-
+};
 
 // Route pour l'inscription de l'utilisateur
-router.post('/register', async (req, res) => {
-    const { nom, prenom, email, password, role } = req.body;
-
+const register = async (req, res) => {
+    const { Nom, Prenom, Email, Mot_de_passe, Role, ID_cinema } = req.body;
     try {
-        const userId = await authService.registerUser(nom, prenom, email, password, role);
-        res.status(201).json({
-            success: true,
-            message: 'Utilisateur créé avec succès',
-            userId
+        const hashedPassword = await bcrypt.hash(Mot_de_passe, 10);
+        const newUtilisateur = await Utilisateur.create({
+            Nom,
+            Prenom,
+            Email,
+            Mot_de_passe: hashedPassword,
+            Role,
+            ID_cinema
         });
+        res.status(201).json({ message: 'Utilisateur créé avec succès', utilisateur: newUtilisateur });
     } catch (error) {
-        console.error('Error during registration:', error);
-        res.status(400).json({
-            success: false,
-            message: error.message
-        });
+        console.error('Error creating user:', error);
+        res.status(500).json({ message: 'Erreur serveur', error });
     }
-});
+};
 
-module.exports = router;
+module.exports = {register, login};

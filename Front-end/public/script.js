@@ -1,4 +1,3 @@
-
 // Fetch films from the API and populate the table
 async function fetchFilms() {
     try {
@@ -9,7 +8,7 @@ async function fetchFilms() {
             const films = data.data; // Extract the film data
             const tableHead = document.getElementById('filmTableHead');
             const tableBody = document.getElementById('filmTableBody');
-            tableHead.innerHTML = `<tr><th>Titre</th><th>Année</th><th>Réalisateur</th></tr>`;
+            tableHead.innerHTML = `<tr><th>Titre</th><th>Année</th><th>Réalisateur</th><th>Durée</th><th>Langue</th><th>Sous-titres</th><th>Âge minimum</th></tr>`;
             tableBody.innerHTML = ``; // Clear existing content
 
             // Dynamically create table rows to display each film
@@ -45,25 +44,29 @@ async function createFilm() {
         Sous_titres: data.get('Sous-titres'),
         Age_minimum: data.get('Age-minimum')
     };
-    fetch('/api/filmcreate', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(selectData),
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            if (data.success) {
-                alert('Film created successfully');
-                window.location.href = 'films.html';
-            } else {
-                console.error('Failed to create film:', data.message);
-            }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
+
+    try {
+        const response = await fetch('/api/filmcreate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(selectData),
         });
+
+        await response.json();
+
+        if (response.ok) {
+            alert('Film created successfully');
+            window.location.href = 'Creerfilm.html';
+        } else {
+            console.error('Failed to create film:', errorData.message);
+            alert('Erreur: ' + errorData.message);
+        }
+    } catch (error) {
+        console.error('Erreur lors de la création du film:', error);
+        alert('Erreur interne du serveur');
+    }
 }
 
 
@@ -72,20 +75,23 @@ async function loginUser(email, password) {
     const loginData = { email, password };
 
     try {
-        const response = await fetch('/auth/login', {
+        const response = await fetch('/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(loginData),
         });
-        const data = await response.json();
 
-        if (data.success) {
-            // Si la connexion est réussie, rediriger vers la page des films
+        const data = await response.json();
+        
+        if (response.ok) {
+            // Si la connexion est réussie, stocker le token et rediriger vers la page des films
+            localStorage.setItem('token', data.token); // Stocker le token dans le localStorage
             alert('Connexion réussie !');
             window.location.href = 'Creerfilm.html'; // Rediriger vers une page de films (ajustez si nécessaire)
         } else {
+            console.error('Failed to login:', data.message);
             alert('Erreur: ' + data.message);
         }
     } catch (error) {
