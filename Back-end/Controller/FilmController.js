@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
-const FilmService = require('../Service/FilmService.js');
+const FilmService = require("../Service/FilmService");
 
 
 // Example routes for films
@@ -16,10 +16,10 @@ router.get('/films', async (req, res) => {
 });
 
 router.post('/filmcreate', async (req, res) => {
-    const { Titre, Annee, Nom_Realisateur } = req.body;  // Extract film data from the request body
+    const { Titre, Annee, Nom_Realisateur, Duree, Langue, Sous_titres, Age_minimum  } = req.body;  // Extract film data from the request body
 
     // Create the film using FilmService
-    const newFilm = await FilmService.createFilm({ Titre, Annee, Nom_Realisateur });
+    const newFilm = await FilmService.createFilm({ Titre, Annee, Nom_Realisateur, Duree, Langue, Sous_titres, Age_minimum  });
 
     // Send a success response
     res.status(201).json({

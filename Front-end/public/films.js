@@ -17,7 +17,12 @@ async function fetchFilms() {
                 row.innerHTML = `
                     <td>${film.Titre}</td>
                     <td>${film.Annee}</td>
-                    <td>${film.Nom_Realisateur}</td>`;
+                    <td>${film.Nom_Realisateur}</td>
+                    <td>${film.Duree}</td>
+                    <td>${film.Langue}</td>
+                    <td>${film.Sous_titres}</td>
+                    <td>${film.Age_minimum}</td>
+                    `;
                 tableBody.appendChild(row);
             });
         } else {
@@ -33,7 +38,11 @@ async function createFilm() {
     const selectData = {
         Titre: data.get('Titre'),
         Annee: data.get('Annee'),
-        Nom_Realisateur: data.get('Nom_Realisateur')
+        Nom_Realisateur: data.get('Nom_Realisateur'),
+        Duree: data.get('Duree'),
+        Langue: data.get('Langue'),
+        Sous_titres: data.get('Sous-titres'),
+        Age_minimum: data.get('Age-minimum')
     };
     fetch('/api/filmcreate', {
         method: 'POST',

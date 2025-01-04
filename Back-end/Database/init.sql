@@ -57,62 +57,46 @@ INSERT INTO Artiste VALUES( 'Burton', 'Tim', '1958');
 
 
 CREATE TABLE Cinema (
+   ID_Cinema INT AUTO_INCREMENT PRIMARY KEY,
    Nom_cinema varchar(10) NOT NULL,
    Arrondissement decimal(2,0),
-   Adresse varchar(30),
-   PRIMARY KEY (Nom_cinema)
+   Adresse varchar(30)
 );
 
 
 -- Contenu de la table 'Cinema'
 
 
-INSERT INTO Cinema VALUES( 'Rex', '2', '22 Bd Poissoniere');
-INSERT INTO Cinema VALUES( 'Kino', '15', '3 Bd Raspail');
-INSERT INTO Cinema VALUES( 'Nations', '12', '3 Rue de Reuilly');
-INSERT INTO Cinema VALUES( 'Halles', '1', 'Forum des Halles');
+INSERT INTO Cinema VALUES( '1', 'Rex', '2', '22 Bd Poissoniere');
+INSERT INTO Cinema VALUES( '2', 'Kino', '15', '3 Bd Raspail');
+INSERT INTO Cinema VALUES( '3', 'Nations', '12', '3 Rue de Reuilly');
+INSERT INTO Cinema VALUES( '4', 'Halles', '1', 'Forum des Halles');
 
 -- Structure de la table 'Film'
 
 
 CREATE TABLE Film (
-   ID_film INT AUTO_INCREMENT PRIMARY KEY,
-   Titre varchar(30),
-   Annee decimal(4,0),
-   Nom_Realisateur varchar(20)
+    ID_film INT AUTO_INCREMENT PRIMARY KEY,          
+    Titre VARCHAR(255) NOT NULL,                       
+    Annee DECIMAL(4, 0),                             
+    Nom_Realisateur VARCHAR(255),                     
+    Duree DECIMAL(5, 2) NOT NULL,                    
+    Langue VARCHAR(50) NOT NULL,                     
+    Sous_titres VARCHAR(50),                        
+    Age_minimum INT NOT NULL
 );
+
 
 
 -- Contenu de la table 'Film'
 
 
-INSERT INTO Film VALUES( '10', 'Annie Hall', '1977', 'Allen');
-INSERT INTO Film VALUES( '57', 'Brazil', '1984', 'Gillian');
-INSERT INTO Film VALUES( '5', 'Underground', '1995', 'Kusturica');
-INSERT INTO Film VALUES( '38', 'Metropolis', '1926', 'Lang');
-INSERT INTO Film VALUES( '45', 'Impitoyable', '1992', 'Eastwood');
-INSERT INTO Film VALUES( '65', 'Vertigo', '1958', 'Hitchcock');
-INSERT INTO Film VALUES( '7', 'Shining', '1980', 'Kubrick');
-INSERT INTO Film VALUES( '6', 'Psychose', '1960', 'Hitchcock');
-INSERT INTO Film VALUES( '3', 'Twin Peaks', '1990', 'Lynch');
-INSERT INTO Film VALUES( '90', 'Casablanca', '1942', 'Curtis');
-INSERT INTO Film VALUES( '85', 'Greystocke', '1984', 'Hudson');
-INSERT INTO Film VALUES( '89', 'Le dernier metro', '1980', 'Truffaut');
-INSERT INTO Film VALUES( '1', 'Reservoir Dogs', '1992', 'Tarantino');
-INSERT INTO Film VALUES( '43', 'Manhattan', '1979', 'Allen');
-INSERT INTO Film VALUES( '11', 'Jurassic Park', '1992', 'Spielberg');
-INSERT INTO Film VALUES( '32', 'Rencontres du 3eme type', '1978', 'Spielberg');
-INSERT INTO Film VALUES( '33', 'Piege de cristal', '1990', 'Hunt');
-INSERT INTO Film VALUES( '34', 'Une journee en enfer', '1994', 'Hunt');
-INSERT INTO Film VALUES( '35', '48 minutes pour vivre', '1992', 'Hunt');
-INSERT INTO Film VALUES( '73', 'Pulp Fiction', '1995', 'Tarantino');
-INSERT INTO Film VALUES( '101', 'Broken Arrow', '1996', 'Woo');
-INSERT INTO Film VALUES( '102', 'Volte-Face', '1997', 'Woo');
-INSERT INTO Film VALUES( '104', 'Titanic', '1998', 'Cameron');
-INSERT INTO Film VALUES( '135', 'Mission Impossible 2', '2000', 'Woo');
-INSERT INTO Film VALUES( '136', 'Mission Impossible', '1997', 'De Palma');
-INSERT INTO Film VALUES( '142', 'Edward scissorhands', '1990', 'Burton');
-INSERT INTO Film VALUES( '141', 'Sleepy Hollow', '1999', 'Burton');
+INSERT INTO Film (Titre, Annee, Nom_Realisateur, Duree, Langue, Sous_titres, Age_minimum)
+VALUES
+('Annie Hall', 1977, 'Woody Allen', 93.00, 'Anglais', 'Aucun sous-titre', 13),
+('Brazil', 1984, 'Terry Gilliam', 142.00, 'Anglais', 'Aucun sous-titre', 16),
+('Underground', 1995, 'Emir Kusturica', 127.00, 'Serbe', 'Sous-titres en anglais', 18),
+('Metropolis', 1926, 'Fritz Lang', 153.00, 'Allemand', 'Sous-titres en français', 12);
 
 -- Structure de la table 'Role'
 
@@ -237,3 +221,16 @@ INSERT INTO Seance VALUES( 'Halles', '2', '3', '9.99', '9.99', '45');
 INSERT INTO Seance VALUES( 'Halles', '3', '1', '9.99', '9.99', '3');
 INSERT INTO Seance VALUES( 'Halles', '3', '2', '9.99', '9.99', '3');
 INSERT INTO Seance VALUES( 'Halles', '3', '3', '9.99', '9.99', '3');
+
+CREATE TABLE Programmation (
+    ID_projection INT AUTO_INCREMENT PRIMARY KEY, 
+    ID_film INT NOT NULL, 
+    Date_debut DATE NOT NULL,                     
+    Date_fin DATE NOT NULL,                       
+    Jours_semaine VARCHAR(255) NOT NULL,          
+    Heure_debut TIME NOT NULL,                    
+    Ville VARCHAR(255) NOT NULL,                 
+    ID_cinema INT NOT NULL,                      
+    FOREIGN KEY (ID_film) REFERENCES Film(ID_film),  
+    FOREIGN KEY (ID_cinema) REFERENCES Cinema(ID_cinema) 
+);

@@ -1,10 +1,10 @@
 const Access_Film = require('../Data Access/Access_Movie.js');
 
 exports.createFilm = async (film) => {
-    const { Titre, Annee, Nom_Realisateur } = film;
+    const { Titre, Annee, Nom_Realisateur, Duree, Langue, Sous_titres, Age_minimum } = film;
 
     // Return the newly created film ID
-    return await Access_Film.createFilm({ Titre, Annee, Nom_Realisateur });
+    return await Access_Film.createFilm({ Titre, Annee, Nom_Realisateur, Duree, Langue, Sous_titres, Age_minimum });
 };
 
 

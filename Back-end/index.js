@@ -1,9 +1,9 @@
 const express = require('express');
 const path = require('path'); // Add this line to import the path module
 const pool = require('./Database/config_database.js');
-const filmController = require('./Controller/FilmController.js');
-const projectionController = require('./Controller/ProjectionController.js');
-const FilmService = require("./Service/FilmService");
+const filmController = require('../Back-end/Controller/FilmController.js');
+const projectionController = require('../Back-end/Controller/ProjectionController.js');
+const FilmService = require("../Back-end/Service/FilmService.js");
 
 const app = express();
 const port = 3000;
