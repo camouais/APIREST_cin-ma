@@ -1,20 +1,21 @@
 body {
     font-family: 'Raleway', sans-serif;
-    background-color: #e7e7e7;
+    background:linear-gradient(to left, #000000, #1b1b1b); 
 }
 .wrapper {
     width: 800px;
     height: 600px;
     position: relative;
     margin: 3% auto;
-    box-shadow: 2px 18px 70px 0px #9D9D9D;
+    
+    /* box-shadow: 2px 18px 70px 0px #9D9D9D; */
     overflow: hidden;
 }
 
 .login-text {
     width: 800px;
     height:450px;
-    background: linear-gradient(to left, #ab68ca, #de67a3); 
+    background: linear-gradient(to left, #000000, #414040); 
     position: absolute;
     top: -300px;
     box-sizing: border-box;
@@ -22,10 +23,14 @@ body {
     transition: all 0.5s ease-in-out;
     z-index: 11;
 }
+#login-lb{
+    color: #dddddd;
+}
+
 
 .text {
     margin-left: 20px;
-    color: #fff;
+    color: #ffffff;
     display: none;
     transition: all 0.5s ease-in-out;
     transition-delay: 0.3s;
@@ -51,7 +56,7 @@ body {
         width: 300px;
         border-radius: 2px;
         border: none;
-        background-color: #444;
+        background-color: #575757;
         opacity: 0.6;
         outline: none;
         color: #fff;
@@ -70,26 +75,19 @@ body {
     }
 
     .login-btn {
-        background: #fff;
+        background: linear-gradient(to left, #100e2b, #060a1b); 
         border: none;
         border-radius: 2px;
-        color: #696a86;
+        color: #dbdce6;
     }
 
-    .signup-btn {
-        background: transparent;
-        border: 2px solid #fff;;
-        border-radius: 2px;
-        color: #fff;
-        margin-left: 30px;
-    }
 }
 
 .cta {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: #696a86;
+    background: #1a253b;
     border: 2px solid #fff;
     position: absolute;
     bottom: -30px;
@@ -101,7 +99,7 @@ body {
 }
 
 .call-text {
-    background-color: #fff;
+    background-color: #bbb9b9;
     width: 800px;
     height: 450px;
     position: absolute;
@@ -113,7 +111,7 @@ body {
     h1 {
         font-size: 42px;
         margin-top: 10%;
-        color: #696a86;
+        color: #000000;
 
         span {
             color: #333;
@@ -127,7 +125,7 @@ body {
         width: 180px;
         border: none;
         border-radius: 20px;
-        background: linear-gradient(to left, #ab68ca, #de67a3); 
+        background: linear-gradient(to left, #1f1b55, #0b112c); 
         color: #fff;
         font-weight: bolder;
         margin-top: 30px;
