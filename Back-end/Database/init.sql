@@ -234,3 +234,20 @@ CREATE TABLE Programmation (
     FOREIGN KEY (ID_film) REFERENCES Film(ID_film),  
     FOREIGN KEY (ID_cinema) REFERENCES Cinema(ID_cinema) 
 );
+
+
+CREATE TABLE Utilisateur (
+    ID_utilisateur INT AUTO_INCREMENT PRIMARY KEY,  
+    Nom VARCHAR(50) NOT NULL,                     
+    Prenom VARCHAR(50) NOT NULL,                   
+    Email VARCHAR(100) UNIQUE NOT NULL,            
+    Mot_de_passe VARCHAR(255) NOT NULL,            
+    Role ENUM('proprietaire', 'admin') NOT NULL,  
+    ID_cinema INT,                                 
+    FOREIGN KEY (ID_cinema) REFERENCES Cinema(ID_cinema)
+);
+INSERT INTO Utilisateur (Nom, Prenom, Email, Mot_de_passe, Role, ID_cinema) 
+VALUES 
+    ('Dupont', 'Jean', 'jean.dupont@example.com', 'motdepassehashé', 'admin', 1),
+    ('Durand', 'Marie', 'marie.durand@example.com', 'motdepassehashé', 'proprietaire', 2);
+INSERT INTO Utilisateur VALUES( 'Halles', '3', '3', '9.99', '9.99', '3');

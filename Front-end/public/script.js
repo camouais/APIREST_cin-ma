@@ -1,3 +1,4 @@
+
 // Fetch films from the API and populate the table
 async function fetchFilms() {
     try {
@@ -64,3 +65,67 @@ async function createFilm() {
             console.error('Error:', error);
         });
 }
+
+
+
+async function loginUser(email, password) {
+    const loginData = { email, password };
+
+    try {
+        const response = await fetch('/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(loginData),
+        });
+        const data = await response.json();
+
+        if (data.success) {
+            // Si la connexion est réussie, rediriger vers la page des films
+            alert('Connexion réussie !');
+            window.location.href = 'Creerfilm.html'; // Rediriger vers une page de films (ajustez si nécessaire)
+        } else {
+            alert('Erreur: ' + data.message);
+        }
+    } catch (error) {
+        console.error('Erreur lors de la connexion:', error);
+        alert('Erreur interne du serveur');
+    }
+}
+
+// Gestionnaire d'événements pour le bouton de connexion
+document.getElementById('loginBtn').addEventListener('click', () => {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // Vérification basique avant d'envoyer la requête
+    if (email && password) {
+        loginUser(email, password);
+    } else {
+        alert('Veuillez remplir tous les champs');
+    }
+});
+
+// Script.js
+
+var cta = document.querySelector(".cta");
+var check = 0;
+
+cta.addEventListener('click', function(e) {
+    var text = e.target.nextElementSibling;
+    var loginText = e.target.parentElement;
+
+    // Afficher/Masquer la zone de connexion
+    text.classList.toggle('show-hide');
+    loginText.classList.toggle('expand');
+    
+    // Modifie l'icône de la flèche
+    if (check == 0) {
+        cta.classList.add('open');  // Pivote la flèche
+        check++;
+    } else {
+        cta.classList.remove('open');
+        check = 0;
+    }
+});
