@@ -8,19 +8,14 @@ exports.authenticateUser = async (email, password) => {
     if (!user) {
         throw new Error('Utilisateur non trouvé');
     }
-
-    if (!password) {
+    if (password!=user.Mot_de_passe ) {
         throw new Error('Mot de passe incorrect');
     }
 
-    return user; // Retourne l'utilisateur authentifié
+    return user; 
 };
 
-// Inscription de l'utilisateur
 exports.registerUser = async (nom, prenom, email, password, role) => {
-    // Hachage du mot de passe avant de l'enregistrer
-
-    // Crée un nouvel utilisateur dans la base de données
     const userId = await userDataAccess.createUser({
         nom, prenom, email, password, role
     });
