@@ -57,7 +57,8 @@ async function createFilm() {
         .then((data) => {
             if (data.success) {
                 alert('Film created successfully');
-                window.location.href = 'Creerfilms.html';
+                document.getElementById('filmForm').reset(); // Réinitialise le formulaire
+                fetchFilms();
             } else {
                 console.error('Failed to create film:', data.message);
             }
