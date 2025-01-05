@@ -11,6 +11,7 @@ router.post('/login', async (req, res) => {
 
     try {
         const user = await authService.authenticateUser(email, password);
+
         res.status(200).json({
             success: true,
             message: 'Authentification réussie',
@@ -19,7 +20,8 @@ router.post('/login', async (req, res) => {
                 nom: user.Nom,
                 prenom: user.Prenom,
                 role: user.Role
-            }
+            },
+            token: 'Bearer ' + authService.generateToken(user)
         });
     } catch (error) {
         console.error('Error during authentication:', error);

@@ -248,6 +248,5 @@ CREATE TABLE Utilisateur (
 );
 INSERT INTO Utilisateur (Nom, Prenom, Email, Mot_de_passe, Role, ID_cinema) 
 VALUES 
-    ('Dupont', 'Jean', 'jean.dupont@example.com', 'motdepassehashé', 'admin', 1),
-    ('Durand', 'Marie', 'marie.durand@example.com', 'motdepassehashé', 'proprietaire', 2);
-INSERT INTO Utilisateur VALUES( 'Halles', '3', '3', '9.99', '9.99', '3');
+    ('Dupont', 'Jean', 'jean.dupont@example.com', '$2a$10$WDZzwOleUIwUcaA1lDHVj.9JbZbN/23mglLZxyl4O/.m3ytNDGDwi', 'admin', 1),
+    ('Durand', 'Marie', 'marie.durand@example.com', '$2a$10$WDZzwOleUIwUcaA1lDHVj.9JbZbN/23mglLZxyl4O/.m3ytNDGDwi', 'proprietaire', 2);

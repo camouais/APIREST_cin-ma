@@ -49,8 +49,9 @@ async function createFilm() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'authorization': localStorage.getItem('token')
         },
-        body: JSON.stringify(selectData),
+        body: JSON.stringify(selectData)
     })
         .then((response) => response.json())
         .then((data) => {
@@ -82,7 +83,12 @@ async function loginUser(email, password) {
         const data = await response.json();
 
         if (data.success) {
-            // Si la connexion est réussie, rediriger vers la page des films
+            // Si la connexion est réussie, on récupère le token d'autorisation
+            localStorage.setItem('token', data.token);
+            console.log('Token:', data.token);
+
+
+            // Puis on redirige l'utilisateur vers la page de films
             alert('Connexion réussie !');
             window.location.href = 'Creerfilm.html'; // Rediriger vers une page de films (ajustez si nécessaire)
         } else {
