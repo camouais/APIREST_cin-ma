@@ -57,7 +57,7 @@ async function createFilm() {
         .then((data) => {
             if (data.success) {
                 alert('Film created successfully');
-                window.location.href = 'films.html';
+                window.location.href = 'Creerfilms.html';
             } else {
                 console.error('Failed to create film:', data.message);
             }
