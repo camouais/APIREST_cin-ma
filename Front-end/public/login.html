@@ -1,18 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Films API</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+
+    <style>
+        /*Fond dégradé bleu et texte blanc*/
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #2c3e50, #4ca1af); /* Fond dégradé */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        /*Carré noir central*/
+        .wrapper {
+            background: rgba(0, 0, 0, 0.7); /*transparence*/
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        /*Formulaire connexion*/
+        .login-text {
+            margin-bottom: 20px;}
+
+        /*Champs email et mot de passe*/
+        .login-text input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+
+        /*Bouton connexion*/
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer; /*Curseur main */
+            transition: background-color 0.3s ease; /*Couleur au survol */
+        }
+
+        /*Changement de couleur au survol*/
+        .login-btn:hover {
+            background-color: #45a049;}
+
+        /*Créer un compte*/
+        .call-text h1 {
+            font-size: 22px;
+            margin-bottom: 20px;}
+
+        /*Bouton "Créer un compte" */
+        .call-text button {
+            padding: 10px 20px;
+            background-color: #007bff; /* Couleur bleue */
+            color: white;
+            border: none;
+            border-radius: 5px; /* Coins arrondis */
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Transition de couleur au survol */}
+
+        /* Changement couleur bouton compte*/
+        .call-text button:hover {
+            background-color: #0056b3;}
+    </style>
+
 </head>
 <body>
 <div class="wrapper">
-    <!-- Formulaire de connexion -->
+    <!--Formulaire connexion -->
     <div class="login-text">
-        <button class="cta"><i class="fas fa-chevron-down fa-1x"></i></button>
         <div class="text">
-            <a type="text" id="login-lb">Login</a>
+            <a type="text" id="login-lb">Veuillez vous authentifier</a>
             <hr>
             <br>
             <input type="email" id="email" placeholder="Adresse mail" required>
@@ -23,7 +98,6 @@
         </div>
     </div>
     <div class="call-text">
-        <h1>Veuillez vous authentifier</h1>
         <button>Créer un compte</button>
     </div>
 </div>
