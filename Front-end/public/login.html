@@ -1,107 +1,35 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
+    <title>Films API login</title>
 
-    <style>
-        /*Fond dégradé bleu et texte blanc*/
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #2c3e50, #4ca1af); /* Fond dégradé */
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
+    <!-- Link to external fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-        /*Carré noir central*/
-        .wrapper {
-            background: rgba(0, 0, 0, 0.7); /*transparence*/
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            width: 90%;
-            max-width: 400px;
-        }
-
-        /*Formulaire connexion*/
-        .login-text {
-            margin-bottom: 20px;}
-
-        /*Champs email et mot de passe*/
-        .login-text input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: none;
-            font-size: 16px;
-        }
-
-        /*Bouton connexion*/
-        .login-btn {
-            width: 100%;
-            padding: 10px;
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer; /*Curseur main */
-            transition: background-color 0.3s ease; /*Couleur au survol */
-        }
-
-        /*Changement de couleur au survol*/
-        .login-btn:hover {
-            background-color: #45a049;}
-
-        /*Créer un compte*/
-        .call-text h1 {
-            font-size: 22px;
-            margin-bottom: 20px;}
-
-        /*Bouton "Créer un compte" */
-        .call-text button {
-            padding: 10px 20px;
-            background-color: #007bff; /* Couleur bleue */
-            color: white;
-            border: none;
-            border-radius: 5px; /* Coins arrondis */
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease; /* Transition de couleur au survol */}
-
-        /* Changement couleur bouton compte*/
-        .call-text button:hover {
-            background-color: #0056b3;}
-    </style>
-
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
 </head>
 <body>
-<div class="wrapper">
-    <!--Formulaire connexion -->
-    <div class="login-text">
-        <div class="text">
-            <a type="text" id="login-lb">Veuillez vous authentifier</a>
-            <hr>
-            <br>
-            <input type="email" id="email" placeholder="Adresse mail" required>
-            <br>
-            <input type="password" id="password" placeholder="Mot de passe" required>
-            <br>
-            <button class="login-btn" id="loginBtn">Se connecter</button>
+<div class="container">
+    <div class="content-box">
+        <div class="image-container">
+            <img src="../public/img/logpage.png" alt="Log Page Image">
+        </div>
+        <div class="form-container">
+            <form action="#">
+                <h1>Welcome back</h1>
+
+                <input type="email" placeholder="Email" required />
+                <hr>
+                <input type="password" placeholder="Password" required />
+                <hr>
+                <button>Sign Up</button>
+            </form>
+            <a href="../public/register.html">Je n'ai pas de compte</a>
         </div>
     </div>
-    <div class="call-text">
-        <button>Créer un compte</button>
-    </div>
 </div>
-
-<script src="script.js"></script>
 </body>
 </html>
