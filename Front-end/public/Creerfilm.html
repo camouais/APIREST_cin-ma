@@ -35,6 +35,16 @@
     <!-- Rows will be dynamically added here -->
     </tbody>
 </table>
+<h1>Projection List</h1>
+<!-- button that fetches projection only if clicked -->
+<button onclick="fetchProjection()">Fetch Projection</button>
+<table>
+    <thead id="ProjectionTableHead">
+    </thead>
+    <tbody id="ProjectionTableBody">
+    <!-- Rows will be dynamically added here -->
+    </tbody>
+</table>
 <h1>Add a New Film</h1>
 <form id="filmForm">
     <label for="Titre">Title:</label>
@@ -59,6 +69,29 @@
     <input type="text" id="Age-minimum" name="Age-minimum" required><br><br>
 
     <button type="submit" onclick="createFilm()">Add Film</button>
+</form>
+
+<h1>Add a New Project</h1>
+<form id="ProjectionForm">
+    <label for="Nom_cinema">Cinema</label>
+    <input type="text" id="Nom_cinema" name="Nom_cinema" required><br><br>
+
+    <label for="No_salle">Salle</label>
+    <input type="text" id="No_salle" name="No_salle" required><br><br>
+
+    <label for="No_seance">Seance</label>
+    <input type="text" id="No_seance" name="No_seance" required><br><br>
+
+    <label for="Heure_debut">Heure de debut</label>
+    <input type="text" id="Heure_debut" name="Heure_debut" required><br><br>
+
+    <label for="Heure_fin">Heure de fin</label>
+    <input type="text" id="Heure_fin" name="Heure_fin" required><br><br>
+
+    <label for="ID_film">Identifiant du film</label>
+    <input type="text" id="ID_film" name="ID_film" required><br><br>
+
+    <button type="submit" onclick="createProjection()">Add Projection</button>
 </form>
 
 </body>
