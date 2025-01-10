@@ -9,7 +9,8 @@ async function fetchFilms() {
             const films = data.data; // Extract the film data
             const tableHead = document.getElementById('filmTableHead');
             const tableBody = document.getElementById('filmTableBody');
-            tableHead.innerHTML = `<tr><th>Titre</th><th>Année</th><th>Réalisateur</th></tr>`;
+            tableHead.innerHTML = `<tr><th>Titre</th><th>Année</th><th>Réalisateur</th><th>Durée</th>
+            <th>Langue</th><th>Sous-titres</th><th>Age requise</th></tr>`;
             tableBody.innerHTML = ``; // Clear existing content
 
             // Dynamically create table rows to display each film
