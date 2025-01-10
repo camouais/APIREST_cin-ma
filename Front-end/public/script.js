@@ -68,6 +68,8 @@ async function createFilm() {
         });
 }
 
+
+
 async function loginUser(email, password) {
     const loginData = { email, password };
 
@@ -124,7 +126,7 @@ cta.addEventListener('click', function(e) {
     // Afficher/Masquer la zone de connexion
     text.classList.toggle('show-hide');
     loginText.classList.toggle('expand');
-
+    
     // Modifie l'icône de la flèche
     if (check == 0) {
         cta.classList.add('open');  // Pivote la flèche

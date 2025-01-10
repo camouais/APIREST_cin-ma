@@ -7,6 +7,8 @@ const { verifyToken } = require('../Middleware/authMiddleware');
 
 // Example routes for films
 router.get('/films', async (req, res) => {
+    
+    console.log("je passe par /films");
     try {
         res.json({ success: true, data: await FilmService.getFilms() });
     } catch (error) {
