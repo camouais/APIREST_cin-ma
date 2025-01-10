@@ -4,110 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Films</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
     <style>
-        /*Style global*/
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #2c3e50, #4ca1af); /*Dégradé*/
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            min-height: 100vh;
+            margin: 20px;
         }
-
-        /*Carré central*/
-        .wrapper {
-            background: rgba(0, 0, 0, 0.8); /*Fond noir transparent */
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            width: 90%;
-            max-width: 800px;
-        }
-
-        /*Titre*/
-        h1 {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        /*Tableau films */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
         }
-
         th, td {
             border: 1px solid #ccc;
             padding: 10px;
             text-align: left;
-            background: rgba(255, 255, 255, 0.1); /*Fond transparent*/
         }
-
         th {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /*Bouton pour récupérer les films */
-        button {
-            padding: 10px 20px;
-            background-color: #007bff; /* Bleu */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin: 10px 0;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        /*Formulaire*/
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        label {
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            font-size: 14px;
-        }
-
-        input:focus {
-            outline: none;
-            border: 2px solid #007bff;
-        }
-
-        form button {
-            background-color: #4caf50; /* Vert */
-            transition: background-color 0.3s ease;
-        }
-
-        form button:hover {
-            background-color: #45a049;
+            background-color: #f4f4f4;
         }
     </style>
+    <script src="script.js"></script>
 </head>
 <body>
 <h1>Film List</h1>
@@ -120,30 +35,63 @@
     <!-- Rows will be dynamically added here -->
     </tbody>
 </table>
+<h1>Projection List</h1>
+<!-- button that fetches projection only if clicked -->
+<button onclick="fetchProjection()">Fetch Projection</button>
+<table>
+    <thead id="ProjectionTableHead">
+    </thead>
+    <tbody id="ProjectionTableBody">
+    <!-- Rows will be dynamically added here -->
+    </tbody>
+</table>
 <h1>Add a New Film</h1>
 <form id="filmForm">
     <label for="Titre">Title:</label>
     <input type="text" id="Titre" name="Titre" required><br><br>
 
-        <label for="Annee">Year:</label>
-        <input type="number" id="Annee" name="Annee" required>
+    <label for="Annee">Year:</label>
+    <input type="number" id="Annee" name="Annee" required><br><br>
 
-        <label for="Nom_Realisateur">Director:</label>
-        <input type="text" id="Nom_Realisateur" name="Nom_Realisateur" required>
+    <label for="Nom_Realisateur">Director:</label>
+    <input type="text" id="Nom_Realisateur" name="Nom_Realisateur" required><br><br>
 
-        <label for="Duree">Duration:</label>
-        <input type="text" id="Duree" name="Duree" required>
+    <label for="Duree">Duree:</label>
+    <input type="text" id="Duree" name="Duree" required><br><br>
 
-        <label for="Langue">Language:</label>
-        <input type="text" id="Langue" name="Langue" required>
+    <label for="Langue">Langue:</label>
+    <input type="text" id="Langue" name="Langue" required><br><br>
 
-        <label for="Sous-titres">Subtitles:</label>
-        <input type="text" id="Sous-titres" name="Sous-titres" required>
+    <label for="Sous-titres">Sous-titres:</label>
+    <input type="text" id="Sous-titres" name="Sous-titres" required><br><br>
 
-        <label for="Age-minimum">Minimum Age:</label>
-        <input type="text" id="Age-minimum" name="Age-minimum" required>
+    <label for="Age-minimum">Age minimum:</label>
+    <input type="text" id="Age-minimum" name="Age-minimum" required><br><br>
 
     <button type="submit" onclick="createFilm()">Add Film</button>
+</form>
+
+<h1>Add a New Project</h1>
+<form id="ProjectionForm">
+    <label for="Nom_cinema">Cinema</label>
+    <input type="text" id="Nom_cinema" name="Nom_cinema" required><br><br>
+
+    <label for="No_salle">Salle</label>
+    <input type="text" id="No_salle" name="No_salle" required><br><br>
+
+    <label for="No_seance">Seance</label>
+    <input type="text" id="No_seance" name="No_seance" required><br><br>
+
+    <label for="Heure_debut">Heure de debut</label>
+    <input type="text" id="Heure_debut" name="Heure_debut" required><br><br>
+
+    <label for="Heure_fin">Heure de fin</label>
+    <input type="text" id="Heure_fin" name="Heure_fin" required><br><br>
+
+    <label for="ID_film">Identifiant du film</label>
+    <input type="text" id="ID_film" name="ID_film" required><br><br>
+
+    <button type="submit" onclick="createProjection()">Add Projection</button>
 </form>
 
 </body>
