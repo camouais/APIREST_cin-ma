@@ -23,6 +23,11 @@ exports.createFilm = async (film) => {
     return result.insertId;  // Retourne l'ID du film nouvellement inséré
 };
 
+exports.getFilmsByOwner = async (userId) => {
+    const [rows] = await pool.query('SELECT * FROM Film WHERE ID_utilisateur = ?', [userId]);
+    return rows;
+};
+
 
 exports.getFilmsByCity = async (city) => {
     const [rows] = await pool.query('SELECT * FROM Film WHERE city = ?', [city]);

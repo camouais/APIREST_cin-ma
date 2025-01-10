@@ -1,19 +1,24 @@
 
 //Fetch films depuis l'API
-async function fetchFilms() {
+async function fetchMyFilms() {
     try {
-        const response = await fetch('/api/films'); // Call the API
-        const data = await response.json(); // Parse JSON response
+        const token = localStorage.getItem('token');
+        const response = await fetch('/api/films/mine', {
+            headers: {
+                'authorization': token
+            }
+        });
+
+        const data = await response.json();
 
         if (data.success) {
-            const films = data.data; // Extract the film data
+            const films = data.data;
             const tableHead = document.getElementById('filmTableHead');
             const tableBody = document.getElementById('filmTableBody');
             tableHead.innerHTML = `<tr><th>Titre</th><th>Année</th><th>Réalisateur</th><th>Durée</th>
             <th>Langue</th><th>Sous-titres</th><th>Age requise</th></tr>`;
-            tableBody.innerHTML = ``; // Clear existing content
+            tableBody.innerHTML = '';
 
-            //Crée une table dynamique contenant les films
             films.forEach(film => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -24,7 +29,7 @@ async function fetchFilms() {
                     <td>${film.Langue}</td>
                     <td>${film.Sous_titres}</td>
                     <td>${film.Age_minimum}</td>
-                    `;
+                `;
                 tableBody.appendChild(row);
             });
         } else {

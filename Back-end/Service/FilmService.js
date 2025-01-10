@@ -15,3 +15,7 @@ exports.getFilmsByCity = async (city) => {
 exports.getFilms = async () => {
     return await Access_Film.getFilms();
 };
+
+exports.getFilmsByOwner = async (userId) => {
+    return await Access_Film.getFilmsByOwner(userId);
+};

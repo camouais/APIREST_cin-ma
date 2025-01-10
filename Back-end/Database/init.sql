@@ -169,6 +169,7 @@ INSERT INTO Salle VALUES( 'Halles', '3', 'N', '60');
 
 
 CREATE TABLE Seance (
+   
    Nom_cinema varchar(10) NOT NULL,
    No_salle decimal(2,0) DEFAULT '0' NOT NULL,
    No_seance decimal(2,0) DEFAULT '0' NOT NULL,
