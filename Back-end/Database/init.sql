@@ -169,20 +169,58 @@ INSERT INTO Salle VALUES( 'Halles', '3', 'N', '60');
 
 
 CREATE TABLE Seance (
-   ID_film INT AUTO_INCREMENT PRIMARY KEY,       
    Nom_cinema varchar(10) NOT NULL,
    No_salle decimal(2,0) DEFAULT '0' NOT NULL,
    No_seance decimal(2,0) DEFAULT '0' NOT NULL,
    Heure_debut decimal(4,2),
    Heure_fin decimal(4,2),
-   ID_film decimal(10,0) DEFAULT '0' NOT NULL
+   ID_film decimal(10,0) DEFAULT '0' NOT NULL,
+   PRIMARY KEY (Nom_cinema, No_salle, No_seance)
 );
 
 -- Contenu de la table 'Seance'
 
 
-INSERT INTO Seance VALUES( '1', 'Rex', '1', '3', '9.99', '9.99', '1');
-INSERT INTO Seance VALUES( '2', 'Rex', '1', '4', '9.99', '9.99', '6');
+INSERT INTO Seance VALUES( 'Rex', '1', '3', '9.99', '9.99', '1');
+INSERT INTO Seance VALUES( 'Rex', '1', '4', '9.99', '9.99', '6');
+INSERT INTO Seance VALUES( 'Rex', '2', '1', '9.99', '9.99', '34');
+INSERT INTO Seance VALUES( 'Rex', '2', '2', '9.99', '9.99', '34');
+INSERT INTO Seance VALUES( 'Rex', '2', '3', '9.99', '9.99', '7');
+INSERT INTO Seance VALUES( 'Rex', '2', '4', '9.99', '9.99', '65');
+INSERT INTO Seance VALUES( 'Rex', '3', '1', '9.99', '9.99', '11');
+INSERT INTO Seance VALUES( 'Rex', '3', '2', '9.99', '9.99', '11');
+INSERT INTO Seance VALUES( 'Rex', '3', '3', '9.99', '9.99', '11');
+INSERT INTO Seance VALUES( 'Rex', '4', '1', '9.99', '9.99', '38');
+INSERT INTO Seance VALUES( 'Rex', '4', '2', '9.99', '9.99', '38');
+INSERT INTO Seance VALUES( 'Rex', '4', '3', '9.99', '9.99', '38');
+INSERT INTO Seance VALUES( 'Kino', '1', '1', '9.99', '9.99', '34');
+INSERT INTO Seance VALUES( 'Kino', '1', '2', '9.99', '9.99', '73');
+INSERT INTO Seance VALUES( 'Kino', '1', '3', '9.99', '9.99', '34');
+INSERT INTO Seance VALUES( 'Kino', '2', '1', '9.99', '9.99', '43');
+INSERT INTO Seance VALUES( 'Kino', '2', '2', '9.99', '9.99', '7');
+INSERT INTO Seance VALUES( 'Kino', '2', '3', '9.99', '9.99', '43');
+INSERT INTO Seance VALUES( 'Kino', '3', '1', '9.99', '9.99', '101');
+INSERT INTO Seance VALUES( 'Kino', '3', '2', '9.99', '9.99', '102');
+INSERT INTO Seance VALUES( 'Kino', '3', '3', '9.99', '9.99', '104');
+INSERT INTO Seance VALUES( 'Kino', '3', '4', '9.99', '9.99', '104');
+INSERT INTO Seance VALUES( 'Nations', '1', '1', '9.99', '9.99', '65');
+INSERT INTO Seance VALUES( 'Nations', '1', '2', '9.99', '9.99', '65');
+INSERT INTO Seance VALUES( 'Nations', '1', '3', '9.99', '9.99', '65');
+INSERT INTO Seance VALUES( 'Nations', '2', '1', '9.99', '9.99', '43');
+INSERT INTO Seance VALUES( 'Nations', '2', '2', '9.99', '9.99', '43');
+INSERT INTO Seance VALUES( 'Nations', '2', '3', '9.99', '9.99', '43');
+INSERT INTO Seance VALUES( 'Nations', '3', '1', '9.99', '9.99', '7');
+INSERT INTO Seance VALUES( 'Nations', '3', '2', '9.99', '9.99', '7');
+INSERT INTO Seance VALUES( 'Nations', '3', '3', '9.99', '9.99', '7');
+INSERT INTO Seance VALUES( 'Halles', '1', '1', '9.99', '9.99', '32');
+INSERT INTO Seance VALUES( 'Halles', '1', '2', '9.99', '9.99', '32');
+INSERT INTO Seance VALUES( 'Halles', '1', '3', '9.99', '9.99', '32');
+INSERT INTO Seance VALUES( 'Halles', '2', '1', '9.99', '9.99', '5');
+INSERT INTO Seance VALUES( 'Halles', '2', '2', '9.99', '9.99', '5');
+INSERT INTO Seance VALUES( 'Halles', '2', '3', '9.99', '9.99', '45');
+INSERT INTO Seance VALUES( 'Halles', '3', '1', '9.99', '9.99', '3');
+INSERT INTO Seance VALUES( 'Halles', '3', '2', '9.99', '9.99', '3');
+INSERT INTO Seance VALUES( 'Halles', '3', '3', '9.99', '9.99', '3');
 
 CREATE TABLE Programmation (
     ID_projection INT AUTO_INCREMENT PRIMARY KEY, 

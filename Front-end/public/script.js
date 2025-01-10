@@ -45,7 +45,6 @@ async function createFilm() {
         Sous_titres: data.get('Sous-titres'),
         Age_minimum: data.get('Age-minimum')
     };
-    console.log("createFilm");
     fetch('/api/filmcreate', {
         method: 'POST',
         headers: {
