@@ -69,74 +69,7 @@ async function createFilm() {
         });
 }
 
-// Fetch Projection from the API and populate the table
-async function fetchProjection() {
-    try {
-        const response = await fetch('/api/seances'); // Call the API
-        console.log("Call the API");
-        const data = await response.json(); // Parse JSON response
 
-        if (data.success) {
-            console.log("données success");
-            const seance = data.data; // Extract the film data
-            const tableHead = document.getElementById('ProjectionTableHead');
-            const tableBody = document.getElementById('ProjectionTableBody');
-            tableHead.innerHTML = `<tr><th>Cinema</th><th>Salle</th><th>Seance</th></tr>`;
-            tableBody.innerHTML = ``; // Clear existing content
-
-            // Dynamically create table rows to display each film
-            seance.forEach(seance => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${seance.Nom_cinema}</td>
-                    <td>${seance.No_salle}</td>
-                    <td>${seance.No_seance}</td>
-                    <td>${seance.Heure_debut}</td>
-                    <td>${seance.Heure_fin}</td>
-                    <td>${seance.ID_film}</td>                    
-                    `;
-                tableBody.appendChild(row);
-            });
-        } else {
-            console.error('Failed to fetch projection:', data.message);
-        }
-    } catch (error) {
-        console.error('Error fetching projection:', error);
-    }
-}
-
-async function createProjection() {
-    const data2 = new FormData(document.getElementById('ProjectionForm'));
-    const selectData = {
-        Nom_cinema: data2.get('Nom_cinema'),
-        No_salle: data2.get('No_salle'),
-        No_seance: data2.get('No_seance'),
-        Heure_debut: data2.get('Heure_debut'),
-        Heure_fin: data2.get('Heure_fin'),
-        ID_film: data2.get('ID_film')
-    };
-    fetch('/api/seancecreate', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'authorization': localStorage.getItem('token')
-        },
-        body: JSON.stringify(selectData)
-    })
-        .then((response) => response.json())
-        .then((data2) => {
-            if (data2.success) {
-                alert('Projection created successfully');
-                document.getElementById('ProjectionForm').reset(); // Réinitialise le formulaire
-                fetchProjection();
-            } else {
-                console.error('Failed to create projection:', data2.message);
-            }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-}
 
 async function loginUser(email, password) {
     const loginData = { email, password };
@@ -194,7 +127,7 @@ cta.addEventListener('click', function(e) {
     // Afficher/Masquer la zone de connexion
     text.classList.toggle('show-hide');
     loginText.classList.toggle('expand');
-    
+
     // Modifie l'icône de la flèche
     if (check == 0) {
         cta.classList.add('open');  // Pivote la flèche

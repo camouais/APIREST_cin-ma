@@ -1,11 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Films API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZoomCiné - Accueil</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        <!--Case centrale -->
+        .wrapper {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        /* Titre principal */
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        /* Texte de description */
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        /* Bouton "Se connecter" */
+        .login-btn {
+            display: inline-block;
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .login-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
+<div class="wrapper">
     <h1>Bienvenue sur ZoomCiné</h1>
-    <a href="login.html">Se connecter</a>
+    <p>
+        Veuillez vous connecter pour accéder à votre espace personnel.
+    </p>
+    <!-- Bouton pour rediriger vers la page de connexion -->
+    <button class="login-btn" onclick="window.location.href='login.html'">Se connecter</button>
+</div>
 </body>
 </html>

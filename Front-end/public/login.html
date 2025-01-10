@@ -2,32 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Films API</title>
-    <link rel="stylesheet" href="style.css"> 
+    <title>Films API login</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!--CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
 </head>
 <body>
-    <div class="wrapper">
-        <!-- Formulaire de connexion -->
-        <div class="login-text">
-            <button class="cta"><i class="fas fa-chevron-down fa-1x"></i></button>
-            <div class="text">
-                <a type="text" id="login-lb">Login</a>
-                <hr>
-                <br>
-                <input type="email" id="email" placeholder="Adresse mail" required>
-                <br>
-                <input type="password" id="password" placeholder="Mot de passe" required>
-                <br>
-                <button class="login-btn" id="loginBtn">Se connecter</button>
-            </div>
+<div class="container">
+    <div class="content-box">
+        <div class="image-container">
+            <img src="../public/img/logpage.png" alt="Log Page Image">
         </div>
-        <div class="call-text">
-            <h1>Veuillez vous authentifier</h1>
-            <button>Créer un compte</button>
+        <div class="form-container">
+            <form action="#">
+                <h1>Welcome back</h1>
+
+                <input type="email" placeholder="Email" required />
+                <hr>
+                <input type="password" placeholder="Password" required />
+                <hr>
+                <button>Sign Up</button>
+            </form>
+            <a href="../public/register.html">Je n'ai pas de compte</a>
         </div>
     </div>
-    
-    <script src="script.js"></script> 
+</div>
 </body>
 </html>
