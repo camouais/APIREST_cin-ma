@@ -1,5 +1,5 @@
 
-// Fetch films from the API and populate the table
+//Fetch films depuis l'API
 async function fetchFilms() {
     try {
         const response = await fetch('/api/films'); // Call the API
@@ -13,7 +13,7 @@ async function fetchFilms() {
             <th>Langue</th><th>Sous-titres</th><th>Age requise</th></tr>`;
             tableBody.innerHTML = ``; // Clear existing content
 
-            // Dynamically create table rows to display each film
+            //Crée une table dynamique contenant les films
             films.forEach(film => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -85,14 +85,14 @@ async function loginUser(email, password) {
         const data = await response.json();
 
         if (data.success) {
-            // Si la connexion est réussie, on récupère le token d'autorisation
+            //Si la connexion est réussie, on récupère le token d'autorisation
             localStorage.setItem('token', data.token);
             console.log('Token:', data.token);
 
 
-            // Puis on redirige l'utilisateur vers la page de films
+            //Puis on redirige l'utilisateur vers la page de films
             alert('Connexion réussie !');
-            window.location.href = 'Creerfilm.html'; // Rediriger vers une page de films (ajustez si nécessaire)
+            window.location.href = 'Creerfilm.html'; //Rediriger vers une page de films
         } else {
             alert('Erreur: ' + data.message);
         }
@@ -102,8 +102,9 @@ async function loginUser(email, password) {
     }
 }
 
-// Gestionnaire d'événements pour le bouton de connexion
+//Gestionnaire d'événements pour le bouton de connexion
 document.getElementById('loginBtn').addEventListener('click', () => {
+    event.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
@@ -115,7 +116,7 @@ document.getElementById('loginBtn').addEventListener('click', () => {
     }
 });
 
-// Script.js
+//Script.js
 
 var cta = document.querySelector(".cta");
 var check = 0;
@@ -124,7 +125,7 @@ cta.addEventListener('click', function(e) {
     var text = e.target.nextElementSibling;
     var loginText = e.target.parentElement;
 
-    // Afficher/Masquer la zone de connexion
+    //Afficher/Masquer la zone de connexion
     text.classList.toggle('show-hide');
     loginText.classList.toggle('expand');
     
