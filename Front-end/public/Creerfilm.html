@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
-        /* Fond dégradé bleu et texte blanc */
+        /*Style global*/
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #2c3e50, #4ca1af); /*Dégradé bleu */
+            background: linear-gradient(to right, #2c3e50, #4ca1af); /*Dégradé*/
             color: white;
             display: flex;
             justify-content: center;
@@ -20,7 +20,7 @@
             min-height: 100vh;
         }
 
-        /*Cadre*/
+        /*Carré central*/
         .wrapper {
             background: rgba(0, 0, 0, 0.8); /*Fond noir transparent */
             padding: 20px 30px;
@@ -38,7 +38,7 @@
             text-align: center;
         }
 
-        /*Tableau pour les films */
+        /*Tableau films */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -49,14 +49,14 @@
             border: 1px solid #ccc;
             padding: 10px;
             text-align: left;
-            background: rgba(255, 255, 255, 0.1); /*Fond transparent cellules*/
+            background: rgba(255, 255, 255, 0.1); /*Fond transparent*/
         }
 
         th {
-            background-color: rgba(255, 255, 255, 0.2); /*Fond en-tête*/
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
-        /*Bouton fetch*/
+        /*Bouton pour récupérer les films */
         button {
             padding: 10px 20px;
             background-color: #007bff; /* Bleu */
@@ -73,11 +73,11 @@
             background-color: #0056b3;
         }
 
-        /*Formulaire pour ajouter un film*/
+        /*Formulaire*/
         form {
             display: flex;
             flex-direction: column;
-            gap: 15px; /*Espace entre les champs*/
+            gap: 15px;
             margin-top: 20px;
         }
 
@@ -100,7 +100,7 @@
         }
 
         form button {
-            background-color: #4caf50; /*Vert */
+            background-color: #4caf50; /* Vert */
             transition: background-color 0.3s ease;
         }
 
@@ -113,7 +113,7 @@
 
 <div class="wrapper">
     <h1>Film List</h1>
-    <button onclick="fetchFilms()">Display Films</button>
+    <button onclick="fetchFilms()">Fetch Films</button>
     <table>
         <thead id="filmTableHead">
         </thead>
