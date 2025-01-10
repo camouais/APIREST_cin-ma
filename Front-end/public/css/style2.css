@@ -1,21 +1,21 @@
 body {
     font-family: 'Raleway', sans-serif;
-    background:linear-gradient(to left, #000000, #1b1b1b); 
+    background:linear-gradient(to left, #000000, #1b1b1b);
 }
 .wrapper {
     width: 800px;
     height: 600px;
     position: relative;
     margin: 3% auto;
-    
-    /* box-shadow: 2px 18px 70px 0px #9D9D9D; */
+
+    /* box-shadow: 2px 18px 70px 0px #9D9D9D;*/
     overflow: hidden;
 }
 
 .login-text {
     width: 800px;
     height:450px;
-    background: linear-gradient(to left, #000000, #414040); 
+    background: linear-gradient(to left, #000000, #414040);
     position: absolute;
     top: -300px;
     box-sizing: border-box;
@@ -38,7 +38,7 @@ body {
     a, a:visited {
         font-size: 36px;
         color: #fff;
-        text-decoration: none;  
+        text-decoration: none;
         font-weight: bold;
         display: block;
     }
@@ -75,7 +75,7 @@ body {
     }
 
     .login-btn {
-        background: linear-gradient(to left, #100e2b, #060a1b); 
+        background: linear-gradient(to left, #100e2b, #060a1b);
         border: none;
         border-radius: 2px;
         color: #dbdce6;
@@ -116,7 +116,7 @@ body {
         span {
             color: #333;
             font-weight: bolder;
-            
+
         }
     }
 
@@ -125,7 +125,7 @@ body {
         width: 180px;
         border: none;
         border-radius: 20px;
-        background: linear-gradient(to left, #1f1b55, #0b112c); 
+        background: linear-gradient(to left, #1f1b55, #0b112c);
         color: #fff;
         font-weight: bolder;
         margin-top: 30px;
