@@ -83,7 +83,8 @@ CREATE TABLE Film (
     Duree DECIMAL(5, 2) NOT NULL,                    
     Langue VARCHAR(50) NOT NULL,                     
     Sous_titres VARCHAR(50),                        
-    Age_minimum INT NOT NULL
+    Age_minimum INT NOT NULL,
+    ID_utilisateur INT
 );
 
 
@@ -91,13 +92,10 @@ CREATE TABLE Film (
 -- Contenu de la table 'Film'
 
 
-INSERT INTO Film (Titre, Annee, Nom_Realisateur, Duree, Langue, Sous_titres, Age_minimum)
+INSERT INTO Film (Titre, Annee, Nom_Realisateur, Duree, Langue, Sous_titres, Age_minimum, ID_utilisateur)
 VALUES
-('Annie Hall', 1977, 'Woody Allen', 93.00, 'Anglais', 'Aucun sous-titre', 13),
-('Brazil', 1984, 'Terry Gilliam', 142.00, 'Anglais', 'Aucun sous-titre', 16),
-('Underground', 1995, 'Emir Kusturica', 127.00, 'Serbe', 'Sous-titres en anglais', 18),
-('Metropolis', 1926, 'Fritz Lang', 153.00, 'Allemand', 'Sous-titres en français', 12);
-
+ ('Annie Hall', 1977, 'Woody Allen', 93.00, 'Anglais', 'Aucun sous-titre', 13, 1),
+ ('Brazil', 1984, 'Terry Gilliam', 142.00, 'Anglais', 'Aucun sous-titre', 16, 2);
 -- Structure de la table 'Role'
 
 
@@ -169,6 +167,7 @@ INSERT INTO Salle VALUES( 'Halles', '3', 'N', '60');
 
 
 CREATE TABLE Seance (
+   
    Nom_cinema varchar(10) NOT NULL,
    No_salle decimal(2,0) DEFAULT '0' NOT NULL,
    No_seance decimal(2,0) DEFAULT '0' NOT NULL,
