@@ -1,5 +1,46 @@
 
 //Fetch films depuis l'API
+async function fetchFilms() {
+    try {
+        const response = await fetch('/api/films');
+        const data = await response.json();
+
+        if (data.success) {
+            console.log("données succès")
+            const films = data.data;  // Les films récupérés de l'API
+            const filmListContainer = document.querySelector('.film-list'); // La section pour afficher les films
+            filmListContainer.innerHTML = '';  // Vide la liste avant d'ajouter les nouveaux films
+
+            films.forEach(film => {
+                // Créez une nouvelle carte de film pour chaque film
+                const filmCard = document.createElement('div');
+                filmCard.classList.add('film-card');
+
+                // Ajoutez les informations de chaque film à la carte
+                filmCard.innerHTML = `
+                    <img src="https://via.placeholder.com/250x350" alt="${film.Titre}">
+                    <div class="film-info">
+                        <h3>${film.Titre}</h3>
+                        <p>Genre: ${film.Genre || 'Inconnu'}</p> <!-- Genre, si défini -->
+                        <p>Durée: ${film.Duree} min</p> <!-- Durée -->
+                        <p>Année: ${film.Annee}</p> <!-- Année -->
+                    </div>
+                `;
+                // Ajoutez la carte de film au conteneur de films
+                filmListContainer.appendChild(filmCard);
+            });
+        } else {
+            console.error('Failed to fetch films:', data.message);
+        }
+    } catch (error) {
+        console.error('Error fetching films:', error);
+    }
+}
+
+// Chargez les films dès que la page se charge
+window.onload = fetchFilms;
+
+
 async function fetchMyFilms() {
     try {
         const token = localStorage.getItem('token');
