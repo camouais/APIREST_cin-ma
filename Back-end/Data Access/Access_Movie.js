@@ -1,27 +1,21 @@
 const pool = require('../Database/config_database.js');
 
 exports.createFilm = async (film) => {
-    const { Titre, Annee, Nom_Realisateur, Duree, Langue, Sous_titres, Age_minimum } = film;
+    const { Titre, Annee, Nom_Realisateur, Duree, Langue, Sous_titres, Age_minimum, ID_utilisateur } = film;
 
-    console.log("Film reçu :", film);  // Vérifiez que les valeurs sont bien reçues
-
-    // Si tous les champs ne sont pas fournis, le film n'est pas créé
-    if (!Titre || !Annee || !Nom_Realisateur || !Duree || !Langue || !Sous_titres || !Age_minimum) {
-        return;
+    if (!Titre || !Annee || !Nom_Realisateur || !Duree || !Langue || !Sous_titres || !Age_minimum || !ID_utilisateur) {
+        return null;
     }
 
-    // Insertion du film dans la base (ne pas inclure ID_film dans l'INSERT)
     const [result] = await pool.query(
-        'INSERT INTO Film (Titre, Annee, Nom_Realisateur, Duree, Langue, Sous_titres, Age_minimum) VALUES (?, ?, ?, ?, ?, ?, ?)',
-        [Titre, Annee, Nom_Realisateur, Duree, Langue, Sous_titres, Age_minimum]
+        'INSERT INTO Film (Titre, Annee, Nom_Realisateur, Duree, Langue, Sous_titres, Age_minimum, ID_utilisateur) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+        [Titre, Annee, Nom_Realisateur, Duree, Langue, Sous_titres, Age_minimum, ID_utilisateur]
     );
-    
 
-    console.log("Résultat de l'insertion :", result);  // Vérifiez le résultat d'insertion
-
-    // Validation du résultat
-    return result.insertId;  // Retourne l'ID du film nouvellement inséré
+    return result.insertId;
 };
+
+
 
 exports.getFilmsByOwner = async (userId) => {
     const [rows] = await pool.query('SELECT * FROM Film WHERE ID_utilisateur = ?', [userId]);

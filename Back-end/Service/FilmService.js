@@ -1,11 +1,20 @@
 const Access_Film = require('../Data Access/Access_Movie.js');
+const UserService = require('../Service/UserService'); // Service pour récupérer l'utilisateur
 
-exports.createFilm = async (film) => {
-    const { Titre, Annee, Nom_Realisateur, Duree, Langue, Sous_titres, Age_minimum } = film;
+exports.createFilm = async (film, userId) => {
+    // Récupérer l'utilisateur pour obtenir son ID_utilisateur
+    const user = await UserService.getUserById(userId);
+    if (!user || !user.ID_utilisateur) {
+        throw new Error("User not found or doesn't belong to a cinema.");
+    }
 
-    // Return the newly created film ID
-    return await Access_Film.createFilm({ Titre, Annee, Nom_Realisateur, Duree, Langue, Sous_titres, Age_minimum });
+    // Ajoutez l'ID_utilisateur au film
+    const filmWithUser = { ...film, ID_utilisateur: user.ID_utilisateur };
+
+    // Insérez le film avec l'ID de l'utilisateur
+    return await Access_Film.createFilm(filmWithUser);
 };
+
 
 
 exports.getFilmsByCity = async (city) => {
