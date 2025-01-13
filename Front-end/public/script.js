@@ -181,6 +181,78 @@ async function createProjection() {
             console.error('Error:', error);
         });
 }
+
+// Fetch Programmation from the API and populate the table
+async function fetchProgrammation() {
+    try {
+        const response = await fetch('/api/programmations'); // Call the API
+        console.log("Call the API");
+        const data = await response.json(); // Parse JSON response
+        if (data.success) {
+            console.log("données success");
+            const programmation = data.data; // Extract the film data
+            const tableHead = document.getElementById('ProgrammationTableHead');
+            const tableBody = document.getElementById('ProgrammationTableBody');
+            tableHead.innerHTML = `<tr><th>ID projection</th><th>ID Film</th><th>Start Date</th><th>End Date</th><th>Days</th><th>Start at</th><th>City</th><th>ID Cinema</th></tr>`;
+            tableBody.innerHTML = ``; // Clear existing content
+            // Dynamically create table rows to display each film
+            seance.forEach(seance => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${programmation.ID_projection }</td>
+                    <td>${programmation.ID_film}</td>
+                    <td>${programmation.Date_debut}</td>
+                    <td>${programmation.Date_fin}</td>
+                    <td>${programmation.Jours_semaine}</td>
+                    <td>${programmation.Heure_debut}</td>
+                    <td>${programmation.Ville}</td>
+                    <td>${programmation.ID_cinema}</td>                    
+                    `;
+                tableBody.appendChild(row);
+            });
+        } else {
+            console.error('Failed to fetch programmation:', data.message);
+        }
+    } catch (error) {
+        console.error('Error fetching programmation:', error);
+    }
+}
+
+async function createProgrammation() {
+    const data2 = new FormData(document.getElementById('ProgrammationForm'));
+    const selectData = {
+        ID_projection: data2.get('ID_projection'),
+        ID_film: data2.get('ID_film'),
+        Date_debut: data2.get('Date_debut'),
+        Date_fin: data2.get('Date_fin'),
+        Jours_semaine: data2.get('Jours_semaine'),
+        Heure_debut: data2.get('Heure_debut'),
+        Ville: data2.get('Ville'),
+        ID_cinema: data2.get('ID_cinema')
+    };
+    fetch('/api/programmationcreate', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'authorization': localStorage.getItem('token')
+        },
+        body: JSON.stringify(selectData)
+    })
+        .then((response) => response.json())
+        .then((data2) => {
+            if (data2.success) {
+                alert('Programmation created successfully');
+                document.getElementById('ProgrammationForm').reset(); // Réinitialise le formulaire
+                fetchProjection();
+            } else {
+                console.error('Failed to create programmation:', data2.message);
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+}
+
 /*
 async function loginUser(email, password) {
     const loginData = { email, password };
