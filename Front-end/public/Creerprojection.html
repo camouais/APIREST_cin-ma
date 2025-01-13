@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Films</title>
+    <title>Projection</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
@@ -116,44 +116,42 @@
 </div>
 
 <div class="wrapper">
-    <h1>Film List</h1>
-    <button onclick="fetchMyFilms()">Display Films</button>
+    <h1>Projection List</h1>
+    <button onclick="fetchProjection()">Display Projection</button>
     <table>
-        <thead id="filmTableHead">
+        <thead id="ProjectionTableHead">
         </thead>
-        <tbody id="filmTableBody">
+        <tbody id="ProjectionTableBody">
         </tbody>
     </table>
 
-    <h1>Add a New Film</h1>
-    <form id="filmForm">
-        <label for="Titre">Title:</label>
-        <input type="text" id="Titre" name="Titre" required>
+    <h1>Add a New Projection</h1>
+    <form id="ProjectionForm"> 
+        <label for="Nom_cinema">Cinema:</label>
+        <input type="text" id="Nom_cinema" name="Nom_cinema" required>
 
-        <label for="Annee">Year:</label>
-        <input type="number" id="Annee" name="Annee" required>
+        <label for="No_salle">Salle:</label>
+        <input type="text" id="No_salle" name="No_salle" required>
 
         <label for="Nom_Realisateur">Director:</label>
         <input type="text" id="Nom_Realisateur" name="Nom_Realisateur" required>
 
-        <label for="Duree">Duration:</label>
-        <input type="text" id="Duree" name="Duree" required>
+        <label for="No_seance">Seance:</label>
+        <input type="text" id="No_seance" name="No_seance" required>
 
-        <label for="Langue">Language:</label>
-        <input type="text" id="Langue" name="Langue" required>
+        <label for="Heure_debut">Start at:</label>
+        <input type="text" id="Heure_debut" name="Heure_debut" required>
 
-        <label for="Sous-titres">Subtitles:</label>
-        <input type="text" id="Sous-titres" name="Sous-titres" required>
+        <label for="Heure_fin">End at:</label>
+        <input type="text" id="Heure_fin" name="Heure_fin" required>
 
-        <label for="Age-minimum">Minimum Age:</label>
-        <input type="text" id="Age-minimum" name="Age-minimum" required>
+        <label for="ID_film">Id film:</label>
+        <input type="text" id="ID_film" name="ID_film" required>
 
-        <button type="submit" onclick="createFilm()">Add Film</button>
+        <button type="submit" onclick="createProjection()">Add Projection</button>
     </form>
 </div>
-
 <div><a href="login.html" class="login-btn">Se deconnecter</a></div>
-
 <script src="script.js"></script>
 
 </body>

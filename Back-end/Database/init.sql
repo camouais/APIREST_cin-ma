@@ -165,75 +165,119 @@ INSERT INTO Salle VALUES( 'Halles', '3', 'N', '60');
 
 -- Structure de la table 'Seance'
 
-
-CREATE TABLE Seance (
+-- Ici j'ai changé la bd de seance 
+--CREATE TABLE Seance (
    
+--   Nom_cinema varchar(10) NOT NULL,
+--   No_salle decimal(2,0) DEFAULT '0' NOT NULL,
+--   No_seance decimal(2,0) DEFAULT '0' NOT NULL,
+--   Heure_debut decimal(4,2),
+--   Heure_fin decimal(4,2),
+--   ID_film decimal(10,0) DEFAULT '0' NOT NULL,
+--   PRIMARY KEY (Nom_cinema, No_salle, No_seance)
+--);
+
+-- Contenu de la table 'Seance'
+
+
+--INSERT INTO Seance VALUES( 'Rex', '1', '3', '9.99', '9.99', '1');
+--INSERT INTO Seance VALUES( 'Rex', '1', '4', '9.99', '9.99', '6');
+--INSERT INTO Seance VALUES( 'Rex', '2', '1', '9.99', '9.99', '34');
+--INSERT INTO Seance VALUES( 'Rex', '2', '2', '9.99', '9.99', '34');
+--INSERT INTO Seance VALUES( 'Rex', '2', '3', '9.99', '9.99', '7');
+--INSERT INTO Seance VALUES( 'Rex', '2', '4', '9.99', '9.99', '65');
+--INSERT INTO Seance VALUES( 'Rex', '3', '1', '9.99', '9.99', '11');
+--INSERT INTO Seance VALUES( 'Rex', '3', '2', '9.99', '9.99', '11');
+--INSERT INTO Seance VALUES( 'Rex', '3', '3', '9.99', '9.99', '11');
+--INSERT INTO Seance VALUES( 'Rex', '4', '1', '9.99', '9.99', '38');
+--INSERT INTO Seance VALUES( 'Rex', '4', '2', '9.99', '9.99', '38');
+--INSERT INTO Seance VALUES( 'Rex', '4', '3', '9.99', '9.99', '38');
+--INSERT INTO Seance VALUES( 'Kino', '1', '1', '9.99', '9.99', '34');
+--INSERT INTO Seance VALUES( 'Kino', '1', '2', '9.99', '9.99', '73');
+--INSERT INTO Seance VALUES( 'Kino', '1', '3', '9.99', '9.99', '34');
+--INSERT INTO Seance VALUES( 'Kino', '2', '1', '9.99', '9.99', '43');
+--INSERT INTO Seance VALUES( 'Kino', '2', '2', '9.99', '9.99', '7');
+--INSERT INTO Seance VALUES( 'Kino', '2', '3', '9.99', '9.99', '43');
+--INSERT INTO Seance VALUES( 'Kino', '3', '1', '9.99', '9.99', '101');
+--INSERT INTO Seance VALUES( 'Kino', '3', '2', '9.99', '9.99', '102');
+--INSERT INTO Seance VALUES( 'Kino', '3', '3', '9.99', '9.99', '104');
+I--NSERT INTO Seance VALUES( 'Kino', '3', '4', '9.99', '9.99', '104');
+--INSERT INTO Seance VALUES( 'Nations', '1', '1', '9.99', '9.99', '65');
+--INSERT INTO Seance VALUES( 'Nations', '1', '2', '9.99', '9.99', '65');
+--INSERT INTO Seance VALUES( 'Nations', '1', '3', '9.99', '9.99', '65');
+--INSERT INTO Seance VALUES( 'Nations', '2', '1', '9.99', '9.99', '43');
+--INSERT INTO Seance VALUES( 'Nations', '2', '2', '9.99', '9.99', '43');
+--INSERT INTO Seance VALUES( 'Nations', '2', '3', '9.99', '9.99', '43');
+--INSERT INTO Seance VALUES( 'Nations', '3', '1', '9.99', '9.99', '7');
+--INSERT INTO Seance VALUES( 'Nations', '3', '2', '9.99', '9.99', '7');
+--INSERT INTO Seance VALUES( 'Nations', '3', '3', '9.99', '9.99', '7');
+--INSERT INTO Seance VALUES( 'Halles', '1', '1', '9.99', '9.99', '32');
+--INSERT INTO Seance VALUES( 'Halles', '1', '2', '9.99', '9.99', '32');
+--INSERT INTO Seance VALUES( 'Halles', '1', '3', '9.99', '9.99', '32');
+--INSERT INTO Seance VALUES( 'Halles', '2', '1', '9.99', '9.99', '5');
+--INSERT INTO Seance VALUES( 'Halles', '2', '2', '9.99', '9.99', '5');
+--INSERT INTO Seance VALUES( 'Halles', '2', '3', '9.99', '9.99', '45');
+--INSERT INTO Seance VALUES( 'Halles', '3', '1', '9.99', '9.99', '3');
+--INSERT INTO Seance VALUES( 'Halles', '3', '2', '9.99', '9.99', '3');
+--INSERT INTO Seance VALUES( 'Halles', '3', '3', '9.99', '9.99', '3');
+
+DROP TABLE Seance;
+CREATE TABLE Seance (
+   ID_seance INT AUTO_INCREMENT PRIMARY KEY,       
    Nom_cinema varchar(10) NOT NULL,
    No_salle decimal(2,0) DEFAULT '0' NOT NULL,
    No_seance decimal(2,0) DEFAULT '0' NOT NULL,
    Heure_debut decimal(4,2),
    Heure_fin decimal(4,2),
-   ID_film decimal(10,0) DEFAULT '0' NOT NULL,
-   PRIMARY KEY (Nom_cinema, No_salle, No_seance)
+   ID_film decimal(10,0) DEFAULT '0' NOT NULL
 );
 
 -- Contenu de la table 'Seance'
 
 
-INSERT INTO Seance VALUES( 'Rex', '1', '3', '9.99', '9.99', '1');
-INSERT INTO Seance VALUES( 'Rex', '1', '4', '9.99', '9.99', '6');
-INSERT INTO Seance VALUES( 'Rex', '2', '1', '9.99', '9.99', '34');
-INSERT INTO Seance VALUES( 'Rex', '2', '2', '9.99', '9.99', '34');
-INSERT INTO Seance VALUES( 'Rex', '2', '3', '9.99', '9.99', '7');
-INSERT INTO Seance VALUES( 'Rex', '2', '4', '9.99', '9.99', '65');
-INSERT INTO Seance VALUES( 'Rex', '3', '1', '9.99', '9.99', '11');
-INSERT INTO Seance VALUES( 'Rex', '3', '2', '9.99', '9.99', '11');
-INSERT INTO Seance VALUES( 'Rex', '3', '3', '9.99', '9.99', '11');
-INSERT INTO Seance VALUES( 'Rex', '4', '1', '9.99', '9.99', '38');
-INSERT INTO Seance VALUES( 'Rex', '4', '2', '9.99', '9.99', '38');
-INSERT INTO Seance VALUES( 'Rex', '4', '3', '9.99', '9.99', '38');
-INSERT INTO Seance VALUES( 'Kino', '1', '1', '9.99', '9.99', '34');
-INSERT INTO Seance VALUES( 'Kino', '1', '2', '9.99', '9.99', '73');
-INSERT INTO Seance VALUES( 'Kino', '1', '3', '9.99', '9.99', '34');
-INSERT INTO Seance VALUES( 'Kino', '2', '1', '9.99', '9.99', '43');
-INSERT INTO Seance VALUES( 'Kino', '2', '2', '9.99', '9.99', '7');
-INSERT INTO Seance VALUES( 'Kino', '2', '3', '9.99', '9.99', '43');
-INSERT INTO Seance VALUES( 'Kino', '3', '1', '9.99', '9.99', '101');
-INSERT INTO Seance VALUES( 'Kino', '3', '2', '9.99', '9.99', '102');
-INSERT INTO Seance VALUES( 'Kino', '3', '3', '9.99', '9.99', '104');
-INSERT INTO Seance VALUES( 'Kino', '3', '4', '9.99', '9.99', '104');
-INSERT INTO Seance VALUES( 'Nations', '1', '1', '9.99', '9.99', '65');
-INSERT INTO Seance VALUES( 'Nations', '1', '2', '9.99', '9.99', '65');
-INSERT INTO Seance VALUES( 'Nations', '1', '3', '9.99', '9.99', '65');
-INSERT INTO Seance VALUES( 'Nations', '2', '1', '9.99', '9.99', '43');
-INSERT INTO Seance VALUES( 'Nations', '2', '2', '9.99', '9.99', '43');
-INSERT INTO Seance VALUES( 'Nations', '2', '3', '9.99', '9.99', '43');
-INSERT INTO Seance VALUES( 'Nations', '3', '1', '9.99', '9.99', '7');
-INSERT INTO Seance VALUES( 'Nations', '3', '2', '9.99', '9.99', '7');
-INSERT INTO Seance VALUES( 'Nations', '3', '3', '9.99', '9.99', '7');
-INSERT INTO Seance VALUES( 'Halles', '1', '1', '9.99', '9.99', '32');
-INSERT INTO Seance VALUES( 'Halles', '1', '2', '9.99', '9.99', '32');
-INSERT INTO Seance VALUES( 'Halles', '1', '3', '9.99', '9.99', '32');
-INSERT INTO Seance VALUES( 'Halles', '2', '1', '9.99', '9.99', '5');
-INSERT INTO Seance VALUES( 'Halles', '2', '2', '9.99', '9.99', '5');
-INSERT INTO Seance VALUES( 'Halles', '2', '3', '9.99', '9.99', '45');
-INSERT INTO Seance VALUES( 'Halles', '3', '1', '9.99', '9.99', '3');
-INSERT INTO Seance VALUES( 'Halles', '3', '2', '9.99', '9.99', '3');
-INSERT INTO Seance VALUES( 'Halles', '3', '3', '9.99', '9.99', '3');
+INSERT INTO Seance VALUES( '1', 'Rex', '1', '3', '9.99', '9.99', '1');
+INSERT INTO Seance VALUES( '2', 'Rex', '1', '4', '9.99', '9.99', '2');
 
+
+--CREATE TABLE Programmation (
+--    ID_projection INT AUTO_INCREMENT PRIMARY KEY, 
+--    ID_film INT NOT NULL, 
+--    Date_debut DATE NOT NULL,                     
+--    Date_fin DATE NOT NULL,                       
+--    Jours_semaine VARCHAR(255) NOT NULL,          
+--    Heure_debut TIME NOT NULL,                    
+--    Ville VARCHAR(255) NOT NULL,                 
+--    ID_cinema INT NOT NULL,                      
+--    FOREIGN KEY (ID_film) REFERENCES Film(ID_film),  
+--    FOREIGN KEY (ID_cinema) REFERENCES Cinema(ID_cinema) 
+--);
 CREATE TABLE Programmation (
     ID_projection INT AUTO_INCREMENT PRIMARY KEY, 
     ID_film INT NOT NULL, 
-    Date_debut DATE NOT NULL,                     
-    Date_fin DATE NOT NULL,                       
+    Date_debut VARCHAR(255) NOT NULL,                     
+    Date_fin VARCHAR(255) NOT NULL,                       
     Jours_semaine VARCHAR(255) NOT NULL,          
-    Heure_debut TIME NOT NULL,                    
+    Heure_debut VARCHAR(255) NOT NULL,                    
     Ville VARCHAR(255) NOT NULL,                 
     ID_cinema INT NOT NULL,                      
     FOREIGN KEY (ID_film) REFERENCES Film(ID_film),  
     FOREIGN KEY (ID_cinema) REFERENCES Cinema(ID_cinema) 
 );
 
+-- Insertion de données dans Film
+INSERT INTO Film (ID_film) VALUES (100);
+
+-- Insertion de données dans Cinema
+INSERT INTO Cinema (ID_cinema) VALUES (111);
+
+-- Insertion de données dans Programmation avec des clés étrangères valides
+INSERT INTO Programmation (ID_film, Date_debut, Date_fin, Jours_semaine, Heure_debut, Ville, ID_cinema) 
+VALUES (100, '10-10-2024', '30-10-2024', 'jeudi,vendredi,dimanche', '9.50', 'Paris', 111);
+
+-- Tentative d'insertion de données dans Programmation avec des clés étrangères invalides
+-- Cela échouera si les valeurs ne correspondent pas aux valeurs existantes dans Film et Cinema
+INSERT INTO Programmation (ID_film, Date_debut, Date_fin, Jours_semaine, Heure_debut, Ville, ID_cinema) 
+VALUES (999, '30/10/2024', '11/11/2024', 'lundi,mardi', '10.00', 'Strasbourg', 222);
 
 CREATE TABLE Utilisateur (
     ID_utilisateur INT AUTO_INCREMENT PRIMARY KEY,  
