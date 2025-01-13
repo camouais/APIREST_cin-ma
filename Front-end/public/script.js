@@ -181,7 +181,7 @@ async function createProjection() {
             console.error('Error:', error);
         });
 }
-
+/*
 async function loginUser(email, password) {
     const loginData = { email, password };
 
@@ -204,6 +204,38 @@ async function loginUser(email, password) {
             //Puis on redirige l'utilisateur vers la page de films
             alert('Connexion réussie !');
             window.location.href = 'Creerfilm.html'; //Rediriger vers une page de films
+        } else {
+            alert('Erreur: ' + data.message);
+        }
+    } catch (error) {
+        console.error('Erreur lors de la connexion:', error);
+        alert('Erreur interne du serveur');
+    }
+}
+*/
+
+async function loginUser(email, password) {
+    const loginData = { email, password };
+
+    try {
+        const response = await fetch('/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(loginData),
+        });
+        const data = await response.json();
+
+        if (data.success) {
+            //Si la connexion est réussie, on récupère le token d'autorisation
+            localStorage.setItem('token', data.token);
+            console.log('Token:', data.token);
+
+
+            //Puis on redirige l'utilisateur vers la page de films
+            alert('Connexion réussie !');
+            window.location.href = 'PageUtilisateur.html'; //Rediriger vers une page de films
         } else {
             alert('Erreur: ' + data.message);
         }
