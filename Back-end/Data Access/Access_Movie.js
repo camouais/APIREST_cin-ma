@@ -22,9 +22,15 @@ exports.getFilmsByOwner = async (userId) => {
     return rows;
 };
 
-
+/*
 exports.getFilmsByCity = async (city) => {
     const [rows] = await pool.query('SELECT * FROM Film WHERE city = ?', [city]);
+    return rows;
+};
+*/
+
+exports.getFilmsByCity = async (city) => {
+    const [rows] = await pool.query('SELECT f.* FROM Film f, Programmation p WHERE f.ID_film = p.ID_film and city = ?', [city]);
     return rows;
 };
 
