@@ -128,8 +128,8 @@ async function fetchFilmsByCity() {
 
         if (data.success) {
             const films = data.data;
-            const tableHead = document.getElementById('filmTableHead');
-            const tableBody = document.getElementById('filmTableBody');
+            const tableHead = document.getElementById('FilmbyCityTableHead');
+            const tableBody = document.getElementById('FilmbyCityTableBody');
             tableHead.innerHTML = `<tr><th>Titre</th><th>Année</th><th>Réalisateur</th><th>Durée</th>
             <th>Langue</th><th>Sous-titres</th><th>Age requise</th></tr>`;
             tableBody.innerHTML = '';
