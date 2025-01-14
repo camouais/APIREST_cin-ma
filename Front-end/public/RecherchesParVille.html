@@ -115,6 +115,24 @@
             color: white;
             text-align: center;
         }
+
+        /*Tableau pour les films */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.1); /*Fond transparent cellules*/
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.2); /*Fond en-tête*/
+        }
     </style>
 </head>
 <body>
@@ -135,7 +153,13 @@
     <h2>Rechercher un film par ville</h2>
     <div class="search-bar">
         <input type="text" placeholder="Entrez une ville...">
-        <button onclick="fetchFilmByCity()">Rechercher</button>
+        <button onclick="getFilmByCity()">Rechercher</button>
+        <table>
+            <thead id="ProjectionTableHead">
+            </thead>
+            <tbody id="ProjectionTableBody">
+            </tbody>
+        </table>
     </div>
 </div>
 
