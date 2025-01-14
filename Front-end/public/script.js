@@ -115,6 +115,46 @@ async function createFilm() {
         });
 }
 
+async function fetchFilmsByCity() {
+    try {
+        const token = localStorage.getItem('token');
+        const response = await fetch('/api/filmsCity', {
+            headers: {
+                'authorization': token
+            }
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            const films = data.data;
+            const tableHead = document.getElementById('filmTableHead');
+            const tableBody = document.getElementById('filmTableBody');
+            tableHead.innerHTML = `<tr><th>Titre</th><th>Année</th><th>Réalisateur</th><th>Durée</th>
+            <th>Langue</th><th>Sous-titres</th><th>Age requise</th></tr>`;
+            tableBody.innerHTML = '';
+
+            films.forEach(film => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${film.Titre}</td>
+                    <td>${film.Annee}</td>
+                    <td>${film.Nom_Realisateur}</td>
+                    <td>${film.Duree}</td>
+                    <td>${film.Langue}</td>
+                    <td>${film.Sous_titres}</td>
+                    <td>${film.Age_minimum}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        } else {
+            console.error('Failed to fetch films:', data.message);
+        }
+    } catch (error) {
+        console.error('Error fetching films:', error);
+    }
+}
+
 // Fetch Projection from the API and populate the table
 async function fetchProjection() {
     try {

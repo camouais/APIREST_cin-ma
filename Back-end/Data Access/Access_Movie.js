@@ -30,7 +30,8 @@ exports.getFilmsByCity = async (city) => {
 */
 
 exports.getFilmsByCity = async (city) => {
-    const [rows] = await pool.query('SELECT f.* FROM Film f, Programmation p WHERE f.ID_film = p.ID_film and city = ?', [city]);
+    console.log("Je passe par getFilmsByCity");
+    const [rows] = await pool.query('SELECT f.* FROM Film f, Programmation p WHERE f.ID_film = p.ID_film and p.ville = ?', [city]);
     return rows;
 };
 
