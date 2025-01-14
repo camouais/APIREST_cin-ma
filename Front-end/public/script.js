@@ -117,14 +117,10 @@ async function createFilm() {
 
 async function fetchFilmsByCity() {
     try {
-        const token = localStorage.getItem('token');
-        const response = await fetch('/api/filmsCity', {
-            headers: {
-                'authorization': token
-            }
-        });
-
-        const data = await response.json();
+        console.log("ici fetchfilmsbycity---1");
+        const response = await fetch('/api/filmsCity'); // Call the API
+        console.log("ici fetchfilmsbycity----2");
+        const data = await response.json(); 
 
         if (data.success) {
             const films = data.data;
@@ -147,6 +143,7 @@ async function fetchFilmsByCity() {
                 `;
                 tableBody.appendChild(row);
             });
+            console.log(films)
         } else {
             console.error('Failed to fetch films:', data.message);
         }
