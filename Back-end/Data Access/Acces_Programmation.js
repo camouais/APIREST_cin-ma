@@ -10,7 +10,7 @@ exports.createProgrammation = async (programmation) => {
         return;
     }
     const [result] = await pool.query(
-        'INSERT INTO Seance (ID_projection, ID_film, Date_debut, Date_fin, Jours_semaine, Heure_debut, Ville, ID_cinema) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+        'INSERT INTO Programmation (ID_projection, ID_film, Date_debut, Date_fin, Jours_semaine, Heure_debut, Ville, ID_cinema) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
         [ID_projection, ID_film, Date_debut, Date_fin, Jours_semaine, Heure_debut, Ville, ID_cinema]
     );
     console.log("Résultat de l'insertion :", result);

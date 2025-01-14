@@ -19,7 +19,7 @@ router.get('/programmations', async (req, res) => {
 router.post('/programmationcreate', async (req, res) => {
     console.log('Received programmation creation request:', req.body); // Log the request body
     const { ID_projection, ID_film, Date_debut, Date_fin, Jours_semaine, Heure_debut, Ville, ID_cinema  } = req.body;  // Extract film data from the request body
-    // Create the film using FilmService
+    
     const newProjection = await ProgrammationService.createProgrammation({ ID_projection, ID_film, Date_debut, Date_fin, Jours_semaine, Heure_debut, Ville, ID_cinema });
     // Send a success response
     res.status(201).json({
