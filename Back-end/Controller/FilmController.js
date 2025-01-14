@@ -30,6 +30,17 @@ router.get('/films/mine', verifyToken, async (req, res) => {
     }
 });
 
+router.get('/filmsCity', async (req, res) => {
+    const decodedToken = req.decodedToken;
+    console.log("je passe par /filmsCity");
+    try {
+        res.json({ success: true, data: await FilmService.getFilmsByCity()});
+    } catch (error) {
+        console.error('Error fetching films in this city:', error);
+        res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+});
+
 router.post('/filmcreate', verifyToken, async (req, res) => {
     const decodedToken = req.decodedToken;
 

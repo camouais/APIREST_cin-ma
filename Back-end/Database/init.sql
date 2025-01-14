@@ -264,20 +264,8 @@ CREATE TABLE Programmation (
     FOREIGN KEY (ID_cinema) REFERENCES Cinema(ID_cinema) 
 );
 
--- Insertion de données dans Film
-INSERT INTO Film (ID_film) VALUES (100);
-
--- Insertion de données dans Cinema
-INSERT INTO Cinema (ID_cinema) VALUES (111);
-
--- Insertion de données dans Programmation avec des clés étrangères valides
-INSERT INTO Programmation (ID_film, Date_debut, Date_fin, Jours_semaine, Heure_debut, Ville, ID_cinema) 
-VALUES (100, '10-10-2024', '30-10-2024', 'jeudi,vendredi,dimanche', '9.50', 'Paris', 111);
-
--- Tentative d'insertion de données dans Programmation avec des clés étrangères invalides
--- Cela échouera si les valeurs ne correspondent pas aux valeurs existantes dans Film et Cinema
-INSERT INTO Programmation (ID_film, Date_debut, Date_fin, Jours_semaine, Heure_debut, Ville, ID_cinema) 
-VALUES (999, '30/10/2024', '11/11/2024', 'lundi,mardi', '10.00', 'Strasbourg', 222);
+INSERT INTO Programmation (ID_Projection, ID_film, Date_debut, Date_fin, Jours_semaine, Heure_debut, Ville, ID_cinema) 
+VALUES (11, 2, '30/10/2024', '11/11/2024', 'lundi,mardi', '10.00', 'Paris', 2), (18, 1, '30/10/2024', '11/11/2024', 'lundi,jeudi,vendredi', '10.00', 'Paris', 2) ;
 
 CREATE TABLE Utilisateur (
     ID_utilisateur INT AUTO_INCREMENT PRIMARY KEY,  
