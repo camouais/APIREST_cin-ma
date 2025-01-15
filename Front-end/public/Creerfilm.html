@@ -14,29 +14,56 @@
 
 
     <h1>Ajouter un nouveau film dans votre cinéma</h1>
-    <form id="filmForm">
-        <label for="Titre">Title:</label>
-        <input type="text" id="Titre" name="Titre" required>
-
-        <label for="Annee">Year:</label>
-        <input type="number" id="Annee" name="Annee" required>
-
-        <label for="Nom_Realisateur">Director:</label>
-        <input type="text" id="Nom_Realisateur" name="Nom_Realisateur" required>
-
-        <label for="Duree">Duration:</label>
-        <input type="text" id="Duree" name="Duree" required>
-
-        <label for="Langue">Language:</label>
-        <input type="text" id="Langue" name="Langue" required>
-
-        <label for="Sous-titres">Subtitles:</label>
-        <input type="text" id="Sous-titres" name="Sous-titres" required>
-
-        <label for="Age-minimum">Minimum Age:</label>
-        <input type="text" id="Age-minimum" name="Age-minimum" required>
-
-        <button type="submit" onclick="createFilm()">Add Film</button>
+    <form id="filmForm" onsubmit="redirectToProgrammingPage(event)">
+        <div class="form-group">
+            <label for="Titre">Titre:</label>
+            <input type="text" id="Titre" name="Titre" required>
+        </div>
+        <div class="form-group">
+            <label for="Annee">Année:</label>
+            <select id="Annee" name="Annee" required>
+                <option value="">Sélectionner l'année</option>
+                
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Nom_Realisateur">Réalisateur:</label>
+            <input type="text" id="Nom_Realisateur" name="Nom_Realisateur" required>
+        </div>
+        <div class="form-group">
+            <label for="Duree">Durée (en minutes):</label>
+            <input type="number" id="Duree" name="Duree" required min="1" max="300">
+        </div>
+        <div class="form-group">
+            <label for="Langue">Langue:</label>
+            <select id="Langue" name="Langue" required>
+                <option value="">Sélectionner une langue</option>
+                <option value="Français">Français</option>
+                <option value="Anglais">Anglais</option>
+                <option value="Espagnol">Espagnol</option>
+                <option value="Allemand">Allemand</option>
+                <option value="Italien">Italien</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Sous-titres">Sous-titres:</label>
+            <select id="Sous-titres" name="Sous-titres" required>
+                <option value="">Sélectionner</option>
+                <option value="Oui">Oui</option>
+                <option value="Non">Non</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Age-minimum">Âge minimum:</label>
+            <select id="Age-minimum" name="Age-minimum" required>
+                <option value="">Sélectionner</option>
+                <option value="3">3 ans</option>
+                <option value="7">7 ans</option>
+                <option value="12">12 ans</option>
+                <option value="16">16 ans</option>
+                <option value="18">18 ans</option>
+            </select>
+        </div><button type="submit" class="btn-submit" onclick="createFilm()">Ajouter Film</button>
     </form>
 </div>
 </body>

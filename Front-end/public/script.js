@@ -391,6 +391,8 @@ cta.addEventListener('click', function(e) {
     }
 });
 
+
+
 let slideIndex = Math.floor(Math.random() * 9) + 1;
 showSlides();
 
@@ -409,12 +411,23 @@ function changeSlide(n) {
 }
 
 
-// Open popup
-function openPopup() {
-    document.getElementById("popup").classList.remove("hidden");
+//PAGE PAGE-PROPRIETAIRE 
+function openPopupCreerFilm() {
+    document.getElementById("popup_creerFilm").classList.remove("hidden");
 }
 
-// Close popup
-function closePopup() {
-    document.getElementById("popup").classList.add("hidden");
+// Fonction pour ouvrir la popup "Créer Programmation"
+function openPopupCreerProgrammation() {
+    document.getElementById("popup_creerProgrammation").classList.remove("hidden");
 }
+
+// Fonction pour fermer une popup spécifique
+function closePopup(popupId) {
+    document.getElementById(popupId).classList.add("hidden");
+}
+
+// pour choisir l'année du film
+const currentYear = new Date().getFullYear();
+    for (let year = currentYear; year >= 1950; year--) {
+        document.write(`<option value="${year}">${year}</option>`);
+    }

@@ -14,31 +14,37 @@
 
 <!-- Barre de navigation -->
 <div class="navbar">
-    <a href="#" class="logo">ZoomCiné</a>
+    <a href="PageUtilisateur.html" class="logo">ZoomCiné</a>
     <div class="nav-links">
-        <a href="Creerfilm.html">Ajout films</a>
-        <button class="btn btn-default" onclick="openPopup()">Ajouter un film</button>
-        <a href="Creerprogrammation.html">Ajout Programmation</a>
+        <button class="btn btn-default" onclick="openPopupCreerFilm()">Ajouter un film</button>
+        <button class="btn btn-default" onclick="openPopupCreerProgrammation()">Ajouter une programmation</button>
     </div>
     <a href="login.html" class="login-btn">Se deconnecter</a>
 </div>
 
-<h1>Film List</h1>
-<button onclick="fetchMyFilms()">Display Films</button>
+<h1>Les films de votre cinéma : </h1>
+<button class="btn btn-primary" onclick="fetchMyFilms()">Display Films</button>
 <table>
     <thead id="filmTableHead">
     </thead>
     <tbody id="filmTableBody">
     </tbody>
 </table>
-<!-- Popup Container -->
-<div id="popup" class="popup hidden">
+
+<!-- Popup Créer film -->
+<div id="popup_creerFilm" class="popup hidden">
     <div class="popup-content">
-        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <span class="close-btn" onclick="closePopup('popup_creerFilm')">&times;</span>
         <iframe src="Creerfilm.html" frameborder="0" class="popup-iframe"></iframe>
     </div>
 </div>
-
+<!-- Popup Créer programmation -->
+<div id="popup_creerProgrammation" class="popup hidden">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup('popup_creerProgrammation')">&times;</span>
+        <iframe src="Creerprogrammation.html" frameborder="0" class="popup-iframe"></iframe>
+    </div>
+</div>
 
 </body>
 <script src="script.js"></script>
