@@ -62,7 +62,7 @@ VALUES
 -- Contenu de la table 'Seance'
 
 
---CREATE TABLE Programmation (
+-- CREATE TABLE Programmation (
 --    ID_projection INT AUTO_INCREMENT PRIMARY KEY, 
 --    ID_film INT NOT NULL, 
 --    Date_debut DATE NOT NULL,                     
@@ -73,7 +73,7 @@ VALUES
 --    ID_cinema INT NOT NULL,                      
 --    FOREIGN KEY (ID_film) REFERENCES Film(ID_film),  
 --    FOREIGN KEY (ID_cinema) REFERENCES Cinema(ID_cinema) 
---);
+-- );
 
 -- Contenu de la table 'Programmation'
 
@@ -90,8 +90,8 @@ CREATE TABLE Programmation (
 );
 
 INSERT INTO Programmation (ID_Projection, ID_film, Date_debut, Date_fin, Jours_semaine, Heure_debut, ID_cinema) 
-VALUES (11, 2, '30/10/2024', '11/11/2024', 'lundi,mardi,mercredi', '10.00', , 2), 
-(18, 1, '30/10/2024', '11/11/2024', 'lundi,jeudi,vendredi', '10.00', 'Paris', 2) ;
+VALUES (11, 2, '30/10/2024', '11/11/2024', 'lundi,mardi,mercredi', '10.00', 2),
+(18, 1, '30/10/2024', '11/11/2024', 'lundi,jeudi,vendredi', '10.00', 2) ;
 
 
 
