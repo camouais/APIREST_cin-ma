@@ -5,7 +5,7 @@ const ProgrammationService = require('../Service/ProgrammationService.js');
 const { verifyToken } = require('../Middleware/authMiddleware');
 
 router.get('/programmations', async (req, res) => {
-   
+
     try {
         res.json({ success: true, data: await ProgrammationService.getProgrammation() });
     } catch (error) {
@@ -14,25 +14,25 @@ router.get('/programmations', async (req, res) => {
     }
 });
 
-router.get('/programmations/mine', verifyToken, async (req, res) => { 
+router.get('/programmations/mine', verifyToken, async (req, res) => {
     const decodedToken = req.decodedToken;
-    
+
     console.log("je passe par /programmations");
     try {
         // Récupérer l'ID du cinéma associé à l'utilisateur
-        const cinemaId = await ProgrammationService.getCinemaIdFromUser(decodedToken.id); 
-        
+        const cinemaId = await ProgrammationService.getCinemaIdFromUser(decodedToken.id);
+
         if (!cinemaId) {
             return res.status(404).json({ success: false, message: 'Cinéma non trouvé pour cet utilisateur' });
         }
-        
+
         console.log(decodedToken.id);
         const idcinema = cinemaId[0]?.id_cinema;
 
         // Récupérer les programmations associées à ce cinéma
         const programmations = await ProgrammationService.getProgrammationByCinema(idcinema);
         // console.log(programmations)
-        
+
         res.json({ success: true, data: programmations });
     } catch (error) {
         console.error('Error fetching owner programmations:', error);

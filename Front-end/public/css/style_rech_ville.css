@@ -12,14 +12,11 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    /* margin: 0; Supprime toute marge extérieure */
     background-color: #141e30;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    /* position: fixed; */
     width: 100%;
     z-index: 100;
 }
-
 
 .navbar .logo {
     font-size: 24px;
@@ -59,8 +56,6 @@ body {
     background-color: #b00610;
 }
 
-
-
 /* Barre de recherche */
 .search-section {
     padding: 50px 20px;
@@ -77,6 +72,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 10px;
+    align-items: center;
 }
 
 .search-bar input {
@@ -95,13 +91,13 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    width: 150px;
 }
 
 .search-bar button:hover {
     background-color: #b00610;
 }
 
-/* Footer */
 footer {
     padding: 20px;
     background-color: #141e30;
@@ -109,7 +105,7 @@ footer {
     text-align: center;
 }
 
-/*Tableau pour les films */
+/*Tableau pour les films*/
 table {
     width: 100%;
     border-collapse: collapse;
