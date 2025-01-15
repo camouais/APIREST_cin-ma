@@ -3,250 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="css/style_accueil_proprietaire.css">
     <title>ZoomCiné - Page Utilisateur</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #2c3e50, #4ca1af);
-            color: white;
-            overflow-x: hidden;
-        }
-
-        /* Barre de navigation */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            /* margin: 0; Supprime toute marge extérieure */
-            background-color: #141e30;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            /* position: fixed; */
-            width: 100%;
-            z-index: 100;
-        }
-
-
-        .navbar .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #e50914;
-            text-decoration: none;
-        }
-
-        .navbar .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .navbar .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            transition: color 0.3s ease;
-        }
-
-        .navbar .nav-links a:hover {
-            color: #e50914;
-        }
-
-        .navbar .login-btn {
-            background-color: #e50914;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-
-        .navbar .login-btn:hover {
-            background-color: #b00610;
-        }
-
-        /* Diaporama */
-        .slideshow-container {
-            position: relative;
-            margin-top: 70px; /* Espace pour la barre de navigation */
-            height: 70vh;
-            overflow: hidden;
-        }
-
-        .slideshow-slide {
-            display: none;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .slideshow-slide .caption {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            color: white;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px;
-            border-radius: 5px;
-            max-width: 600px;
-        }
-
-        .slideshow-slide .caption h3 {
-            font-size: 24px;
-            margin: 0 0 10px 0;
-        }
-
-        .slideshow-slide .caption p {
-            font-size: 16px;
-        }
-
-        /* Navigation des diapositives */
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            margin-top: -22px;
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-            transition: 0.3s ease;
-        }
-
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-
-        .prev {
-            left: 0;
-        }
-
-        .prev:hover, .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        /* Section avec cartes */
-/* Section Films Populaires */
-/* Section Films Populaires */
-.section-films {
-    padding: 50px 20px;
-    background-color: #141e30; /* Fond sombre similaire au diaporama */
-    text-align: center;
-    margin-top: 40px; /* Espacement avec le diaporama */
-    border-top: 5px solid #000000; /* Ligne rouge pour démarcation */
-    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.5); /* Ombre pour démarquer la section */
-}
-
-.section-films h2 {
-    font-size: 32px;
-    margin-bottom: 30px;
-    color: #ffffff; /* Rouge pour le titre */
-    text-transform: uppercase; /* Style pour accentuer le titre */
-    letter-spacing: 2px;
-}
-
-.film-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.film-card {
-    width: 250px;
-    background-color: #2c3e50; /* Couleur sombre pour les cartes */
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-    transition: transform 0.3s ease;
-    color: white; /* Texte blanc pour correspondre à la charte graphique */
-}
-
-.film-card img {
-    width: 100%;
-    height: auto;
-}
-
-.film-card .film-info {
-    padding: 15px;
-    text-align: center;
-}
-
-.film-card .film-info h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #ffffff; /* Titre des films en rouge */
-}
-
-.film-card .film-info p {
-    font-size: 14px;
-    margin: 5px 0;
-    color: #ddd; /* Texte secondaire en gris clair */
-}
-
-.film-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
-}
-
-
-        /* Barre de recherche */
-        .search-section {
-            padding: 50px 20px;
-            background-color: #2c3e50;
-            text-align: center;
-        }
-
-        .search-section h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .search-bar {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .search-bar input {
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            width: 300px;
-        }
-
-        .search-bar button {
-            background-color: #e50914;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .search-bar button:hover {
-            background-color: #b00610;
-        }
-
-        /* Footer */
-        footer {
-            padding: 20px;
-            background-color: #141e30;
-            color: white;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
 
@@ -255,12 +17,27 @@
     <a href="#" class="logo">ZoomCiné</a>
     <div class="nav-links">
         <a href="Creerfilm.html">Ajout films</a>
-        <a href="Creerprojection.html">Ajout Projections</a>
+        <button class="btn btn-default" onclick="openPopup()">Ajouter un film</button>
         <a href="Creerprogrammation.html">Ajout Programmation</a>
     </div>
     <a href="login.html" class="login-btn">Se deconnecter</a>
 </div>
 
+<h1>Film List</h1>
+<button onclick="fetchMyFilms()">Display Films</button>
+<table>
+    <thead id="filmTableHead">
+    </thead>
+    <tbody id="filmTableBody">
+    </tbody>
+</table>
+<!-- Popup Container -->
+<div id="popup" class="popup hidden">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <iframe src="Creerfilm.html" frameborder="0" class="popup-iframe"></iframe>
+    </div>
+</div>
 
 
 </body>

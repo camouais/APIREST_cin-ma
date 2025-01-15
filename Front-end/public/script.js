@@ -390,3 +390,31 @@ cta.addEventListener('click', function(e) {
         check = 0;
     }
 });
+
+let slideIndex = Math.floor(Math.random() * 9) + 1;
+showSlides();
+
+function showSlides() {
+    let slides = document.querySelectorAll('.slideshow-slide');
+    slides.forEach(slide => slide.style.display = 'none'); // Masque toutes les diapositives
+    slideIndex++;
+    if (slideIndex > slides.length) slideIndex = 1; // Revient au début
+    slides[slideIndex - 1].style.display = 'block'; // Affiche la diapositive actuelle
+    setTimeout(showSlides, 3000); // Change toutes les 10 secondes
+}
+
+function changeSlide(n) {
+    slideIndex += n - 1;
+    showSlides();
+}
+
+
+// Open popup
+function openPopup() {
+    document.getElementById("popup").classList.remove("hidden");
+}
+
+// Close popup
+function closePopup() {
+    document.getElementById("popup").classList.add("hidden");
+}

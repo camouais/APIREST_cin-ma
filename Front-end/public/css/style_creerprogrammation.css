@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #2c3e50, #4ca1af); /*Dégradé bleu */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/*Cadre*/
+.wrapper {
+    background: rgba(0, 0, 0, 0.8); /*Fond noir transparent */
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 800px;
+}
+
+/*Titre*/
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/*Tableau pour les films */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.1); /*Fond transparent cellules*/
+}
+
+th {
+    background-color: rgba(255, 255, 255, 0.2); /*Fond en-tête*/
+}
+
+/*Bouton fetch*/
+button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Bleu */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px 0;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/*Formulaire pour ajouter un film*/
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /*Espace entre les champs*/
+    margin-top: 20px;
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid #007bff;
+}
+
+form button {
+    background-color: #4caf50; /*Vert */
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
