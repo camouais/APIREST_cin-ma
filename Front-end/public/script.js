@@ -337,3 +337,20 @@ function openPopupCreerProgrammation() {
 function closePopup(popupId) {
     document.getElementById(popupId).classList.add("hidden");
 }
+
+
+//fonction pour page de contact
+function handleSubmit(event) {
+    event.preventDefault(); //empeche traitement par defaut du form
+
+    const form = document.getElementById('contactForm');
+    const formData = new FormData(form);
+
+    //Pour recup les datas du formulaire
+    console.log('Form data:', formData);
+    //Popup
+    alert('Votre message a bien été envoyé!');
+
+    //Redirection
+    window.location.href = 'index.html';
+}
