@@ -7,7 +7,7 @@ const authService = require('../Service/authService');
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
-    console.log('Received login request:', email); // Ajoutez ce log pour vérifier que la requête arrive bien
+    // console.log('Received login request:', email); // Ajoutez ce log pour vérifier que la requête arrive bien
 
     try {
         const user = await authService.authenticateUser(email, password);

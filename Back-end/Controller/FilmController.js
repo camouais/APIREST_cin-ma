@@ -8,7 +8,7 @@ const { verifyToken } = require('../Middleware/authMiddleware');
 // Example routes for films
 router.get('/films', async (req, res) => {
     
-    console.log("je passe par /films");
+    // console.log("je passe par /films");
     try {
         res.json({ success: true, data: await FilmService.getFilms() });
     } catch (error) {
@@ -32,7 +32,7 @@ router.get('/films/mine', verifyToken, async (req, res) => {
 
 router.get('/filmsCity', async (req, res) => {
     const decodedToken = req.decodedToken;
-    console.log("je passe par /filmsCity");
+    // console.log("je passe par /filmsCity");
     try {
         res.json({ success: true, data: await FilmService.getFilmsByCity()});
     } catch (error) {

@@ -22,12 +22,21 @@
     <a href="login.html" class="login-btn">Se deconnecter</a>
 </div>
 
+<!-- Barre de navigation -->
 <h1>Les films de votre cinéma : </h1>
-<button class="btn btn-primary" onclick="fetchMyFilms()">Display Films</button>
+<button class="btn btn-primary" onclick="fetchMyFilms()">Afficher</button>
 <table>
     <thead id="filmTableHead">
     </thead>
     <tbody id="filmTableBody">
+    </tbody>
+</table>
+<h1>Les programmation de votre cinéma : </h1>
+<button class="btn btn-secondary" onclick="fetchMyProgrammations()">Afficher</button>
+<table>
+    <thead id="programmationTableHead">
+    </thead>
+    <tbody id="programmationTableBody">
     </tbody>
 </table>
 

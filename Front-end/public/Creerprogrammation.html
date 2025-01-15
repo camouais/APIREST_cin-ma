@@ -16,42 +16,31 @@
 
 <div class="wrapper">
     <h1>Programmation List</h1>
-    <button onclick="fetchProgrammation()">Display Programmation</button>
-    <table>
-        <thead id="ProgrammationTableHead">
-        </thead>
-        <tbody id="ProgrammationTableBody">
-        </tbody>
-    </table>
+
 
     <h1>Add a New Programmation</h1>
     <form id="ProgrammationForm"> 
-        <label for="ID_projection">ID projection:</label>
-        <input type="text" id="ID_projection" name="ID_projection" required>
-
-        <label for="ID_film">ID film:</label>
-        <input type="text" id="ID_film" name="ID_film" required>
-
-        <label for="Date_debut">Start date:</label>
-        <input type="text" id="Date_debut" name="Date_debut" required>
-
-        <label for="Date_fin">End date:</label>
-        <input type="text" id="Date_fin" name="Date_fin" required>
-
-        <label for="Jours_semaine">Days:</label>
-        <input type="text" id="Jours_semaine" name="Jours_semaine" required>
-
-        <label for="Heure_debut">Start at:</label>
-        <input type="text" id="Heure_debut" name="Heure_debut" required>
-
-        <label for="Ville">City:</label>
-        <input type="text" id="Ville" name="Ville" required>
-
-        <label for="Id_cinema">ID cinema:</label>
-        <input type="text" id="Id_cinema" name="Id_cinema" required>
-
-        <button type="submit" onclick="createProgrammation()">Add Programmation</button>
+        <label for="ID_film">Identifiant du film :</label>
+        <input type="number" id="ID_film" name="ID_film" required>
+    
+        <label for="Date_debut">Début de disponibilité du film (AAAA-MM-JJ) :</label>
+        <input type="date" id="Date_debut" name="Date_debut" required>
+    
+        <label for="Date_fin">Fin de disponibilité du film (AAAA-MM-JJ) :</label>
+        <input type="date" id="Date_fin" name="Date_fin" required>
+    
+        <label for="Jours_semaine">Jours de séance :</label>
+        <input type="text" id="Jours_semaine" name="Jours_semaine" placeholder="lundi,mardi" required>
+    
+        <label for="Heure_debut">Heure de début (HH:MM) :</label>
+        <input type="time" id="Heure_debut" name="Heure_debut" required>
+    
+        <label for="ID_cinema">Identifiant du cinéma :</label>
+        <input type="number" id="ID_cinema" name="ID_cinema" required>
+    
+        <button type="button" onclick="createProgrammation()">Add Programmation</button>
     </form>
+    
 </div>
 <div><a href="login.html" class="login-btn">Se deconnecter</a></div>
 <script src="script.js"></script>

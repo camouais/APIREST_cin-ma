@@ -6,7 +6,7 @@ async function fetchFilms() {
         const data = await response.json();
 
         if (data.success) {
-            console.log("données succès")
+            // console.log("données succès")
             const films = data.data;  // Les films récupérés de l'API
             const filmListContainer = document.querySelector('.film-list'); // La section pour afficher les films
             filmListContainer.innerHTML = '';  // Vide la liste avant d'ajouter les nouveaux films
@@ -56,8 +56,15 @@ async function fetchMyFilms() {
             const films = data.data;
             const tableHead = document.getElementById('filmTableHead');
             const tableBody = document.getElementById('filmTableBody');
-            tableHead.innerHTML = `<tr><th>Titre</th><th>Année</th><th>Réalisateur</th><th>Durée</th>
-            <th>Langue</th><th>Sous-titres</th><th>Age requise</th></tr>`;
+            tableHead.innerHTML = `<tr>
+                <th>Titre</th>
+                <th>Année</th>
+                <th>Réalisateur
+                </th><th>Durée</th>
+                <th>Langue</th>
+                <th>Sous-titres</th>
+                <th>Age requis</th>
+                </tr>`;
             tableBody.innerHTML = '';
 
             films.forEach(film => {
@@ -117,9 +124,9 @@ async function createFilm() {
 
 async function fetchFilmsByCity() {
     try {
-        console.log("ici fetchfilmsbycity---1");
+        // console.log("ici fetchfilmsbycity---1");
         const response = await fetch('/api/filmsCity'); // Call the API
-        console.log("ici fetchfilmsbycity----2");
+        // console.log("ici fetchfilmsbycity----2");
         const data = await response.json(); 
 
         if (data.success) {
@@ -143,7 +150,7 @@ async function fetchFilmsByCity() {
                 `;
                 tableBody.appendChild(row);
             });
-            console.log(films)
+            // console.log(films)
         } else {
             console.error('Failed to fetch films:', data.message);
         }
@@ -152,177 +159,93 @@ async function fetchFilmsByCity() {
     }
 }
 
-// Fetch Projection from the API and populate the table
-async function fetchProjection() {
+async function fetchMyProgrammations() {
     try {
-        const response = await fetch('/api/seances'); // Call the API
-        console.log("Call the API");
-        const data = await response.json(); // Parse JSON response
-        if (data.success) {
-            console.log("données success");
-            const seance = data.data; // Extract the film data
-            const tableHead = document.getElementById('ProjectionTableHead');
-            const tableBody = document.getElementById('ProjectionTableBody');
-            tableHead.innerHTML = `<tr><th>Cinema</th><th>Salle</th><th>Seance</th><th>Start at</th><th>End at</th><th>ID Film</th></tr>`;
-            tableBody.innerHTML = ``; // Clear existing content
-            // Dynamically create table rows to display each film
-            seance.forEach(seance => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${seance.Nom_cinema}</td>
-                    <td>${seance.No_salle}</td>
-                    <td>${seance.No_seance}</td>
-                    <td>${seance.Heure_debut}</td>
-                    <td>${seance.Heure_fin}</td>
-                    <td>${seance.ID_film}</td>                    
-                    `;
-                tableBody.appendChild(row);
-            });
-        } else {
-            console.error('Failed to fetch projection:', data.message);
-        }
-    } catch (error) {
-        console.error('Error fetching projection:', error);
-    }
-}
-
-async function createProjection() {
-    const data2 = new FormData(document.getElementById('ProjectionForm'));
-    const selectData = {
-        Nom_cinema: data2.get('Nom_cinema'),
-        No_salle: data2.get('No_salle'),
-        No_seance: data2.get('No_seance'),
-        Heure_debut: data2.get('Heure_debut'),
-        Heure_fin: data2.get('Heure_fin'),
-        ID_film: data2.get('ID_film')
-    };
-    fetch('/api/seancecreate', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'authorization': localStorage.getItem('token')
-        },
-        body: JSON.stringify(selectData)
-    })
-        .then((response) => response.json())
-        .then((data2) => {
-            if (data2.success) {
-                alert('Projection created successfully');
-                document.getElementById('ProjectionForm').reset(); // Réinitialise le formulaire
-                fetchProjection();
-            } else {
-                console.error('Failed to create projection:', data2.message);
+        const token = localStorage.getItem('token');
+        const response = await fetch('/api/programmations/mine', {
+            headers: {
+                'authorization': token
             }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
         });
-}
 
-// Fetch Programmation from the API and populate the table
-async function fetchProgrammation() {
-    try {
-        const response = await fetch('/api/programmations'); // Call the API
-        console.log("Call the API");
-        const data = await response.json(); // Parse JSON response
+        const data = await response.json();
+
         if (data.success) {
-            console.log("données success");
-            const programmation = data.data; // Extract the film data
-            const tableHead = document.getElementById('ProgrammationTableHead');
-            const tableBody = document.getElementById('ProgrammationTableBody');
-            tableHead.innerHTML = `<tr><th>ID projection</th><th>ID Film</th><th>Start Date</th><th>End Date</th><th>Days</th><th>Start at</th><th>City</th><th>ID Cinema</th></tr>`;
-            tableBody.innerHTML = ``; // Clear existing content
-            // Dynamically create table rows to display each film
-            seance.forEach(seance => {
+            const programmations = data.data;
+            const tableHead = document.getElementById('programmationTableHead');
+            const tableBody = document.getElementById('programmationTableBody');
+            
+            tableHead.innerHTML = `<tr>
+                <th>ID Projection</th>
+                <th>ID Film</th>
+                <th>Date Début</th>
+                <th>Date Fin</th>
+                <th>Jours de Semaine</th>
+                <th>Heure Début</th>
+                <th>Ville</th>
+                <th>ID Cinéma</th>
+            </tr>`;
+            tableBody.innerHTML = ''; 
+
+            programmations.forEach(programmation => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${programmation.ID_projection }</td>
+                    <td>${programmation.ID_projection}</td>
                     <td>${programmation.ID_film}</td>
                     <td>${programmation.Date_debut}</td>
                     <td>${programmation.Date_fin}</td>
                     <td>${programmation.Jours_semaine}</td>
                     <td>${programmation.Heure_debut}</td>
-                    <td>${programmation.Ville}</td>
-                    <td>${programmation.ID_cinema}</td>                    
-                    `;
+                    <td>${programmation.ID_cinema}</td>
+                `;
                 tableBody.appendChild(row);
             });
         } else {
-            console.error('Failed to fetch programmation:', data.message);
+            console.error('Failed to fetch programmations:', data.message);
         }
     } catch (error) {
-        console.error('Error fetching programmation:', error);
+        console.error('Error fetching programmations:', error);
     }
 }
+
 
 async function createProgrammation() {
-    const data2 = new FormData(document.getElementById('ProgrammationForm'));
-    const selectData = {
-        ID_projection: data2.get('ID_projection'),
-        ID_film: data2.get('ID_film'),
-        Date_debut: data2.get('Date_debut'),
-        Date_fin: data2.get('Date_fin'),
-        Jours_semaine: data2.get('Jours_semaine'),
-        Heure_debut: data2.get('Heure_debut'),
-        Ville: data2.get('Ville'),
-        ID_cinema: data2.get('ID_cinema')
+    const data = new FormData(document.getElementById('ProgrammationForm'));
+    const programmationData = {
+        ID_film: data.get('ID_film'),
+        Date_debut: data.get('Date_debut'),
+        Date_fin: data.get('Date_fin'),
+        Jours_semaine: data.get('Jours_semaine'),
+        Heure_debut: data.get('Heure_debut'),
+        ID_cinema: data.get('ID_cinema')
     };
-    fetch('/api/programmationcreate', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'authorization': localStorage.getItem('token')
-        },
-        body: JSON.stringify(selectData)
-    })
-        .then((response) => response.json())
-        .then((data2) => {
-            if (data2.success) {
-                alert('Programmation created successfully');
-                document.getElementById('ProgrammationForm').reset(); // Réinitialise le formulaire
-                fetchProjection();
-            } else {
-                console.error('Failed to create programmation:', data2.message);
-            }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-}
-
-/*
-async function loginUser(email, password) {
-    const loginData = { email, password };
 
     try {
-        const response = await fetch('/auth/login', {
+        const response = await fetch('/api/programmationcreate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'authorization': localStorage.getItem('token') // Si nécessaire
             },
-            body: JSON.stringify(loginData),
+            body: JSON.stringify(programmationData)
         });
-        const data = await response.json();
 
-        if (data.success) {
-            //Si la connexion est réussie, on récupère le token d'autorisation
-            localStorage.setItem('token', data.token);
-            console.log('Token:', data.token);
-
-
-            //Puis on redirige l'utilisateur vers la page de films
-            alert('Connexion réussie !');
-            window.location.href = 'Creerfilm.html'; //Rediriger vers une page de films
+        const result = await response.json();
+        if (result.success) {
+            alert('Programmation created successfully');
+            document.getElementById('ProgrammationForm').reset();
+            fetchProgrammation(); // Rafraîchir la liste
         } else {
-            alert('Erreur: ' + data.message);
+            console.error('Failed to create programmation:', result.message);
+            alert(result.message);
         }
     } catch (error) {
-        console.error('Erreur lors de la connexion:', error);
-        alert('Erreur interne du serveur');
+        console.error('Error:', error);
+        alert('Une erreur s\'est produite lors de la création de la programmation.');
     }
 }
-*/
 
+//Fonctions pour se connecter à la session utilisateur
 async function loginUser(email, password) {
     const loginData = { email, password };
 
@@ -339,7 +262,7 @@ async function loginUser(email, password) {
         if (data.success) {
             //Si la connexion est réussie, on récupère le token d'autorisation
             localStorage.setItem('token', data.token);
-            console.log('Token:', data.token);
+            // console.log('Token:', data.token);
 
 
             //Puis on redirige l'utilisateur vers la page de films
@@ -368,30 +291,8 @@ document.getElementById('loginBtn').addEventListener('click', () => {
     }
 });
 
-//Script.js
 
-var cta = document.querySelector(".cta");
-var check = 0;
-
-cta.addEventListener('click', function(e) {
-    var text = e.target.nextElementSibling;
-    var loginText = e.target.parentElement;
-
-    //Afficher/Masquer la zone de connexion
-    text.classList.toggle('show-hide');
-    loginText.classList.toggle('expand');
-    
-    // Modifie l'icône de la flèche
-    if (check == 0) {
-        cta.classList.add('open');  // Pivote la flèche
-        check++;
-    } else {
-        cta.classList.remove('open');
-        check = 0;
-    }
-});
-
-
+// éléments de style pour la page d'accueil pour le diaporama 
 
 let slideIndex = Math.floor(Math.random() * 9) + 1;
 showSlides();
@@ -410,8 +311,9 @@ function changeSlide(n) {
     showSlides();
 }
 
+//page des prioritaires pour les pop up 
 
-//PAGE PAGE-PROPRIETAIRE 
+// Fonction pour ouvrir la popup "Créer Film"
 function openPopupCreerFilm() {
     document.getElementById("popup_creerFilm").classList.remove("hidden");
 }
