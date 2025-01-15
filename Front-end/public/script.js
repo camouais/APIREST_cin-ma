@@ -390,3 +390,44 @@ cta.addEventListener('click', function(e) {
         check = 0;
     }
 });
+
+
+
+let slideIndex = Math.floor(Math.random() * 9) + 1;
+showSlides();
+
+function showSlides() {
+    let slides = document.querySelectorAll('.slideshow-slide');
+    slides.forEach(slide => slide.style.display = 'none'); // Masque toutes les diapositives
+    slideIndex++;
+    if (slideIndex > slides.length) slideIndex = 1; // Revient au début
+    slides[slideIndex - 1].style.display = 'block'; // Affiche la diapositive actuelle
+    setTimeout(showSlides, 3000); // Change toutes les 10 secondes
+}
+
+function changeSlide(n) {
+    slideIndex += n - 1;
+    showSlides();
+}
+
+
+//PAGE PAGE-PROPRIETAIRE 
+function openPopupCreerFilm() {
+    document.getElementById("popup_creerFilm").classList.remove("hidden");
+}
+
+// Fonction pour ouvrir la popup "Créer Programmation"
+function openPopupCreerProgrammation() {
+    document.getElementById("popup_creerProgrammation").classList.remove("hidden");
+}
+
+// Fonction pour fermer une popup spécifique
+function closePopup(popupId) {
+    document.getElementById(popupId).classList.add("hidden");
+}
+
+// pour choisir l'année du film
+const currentYear = new Date().getFullYear();
+    for (let year = currentYear; year >= 1950; year--) {
+        document.write(`<option value="${year}">${year}</option>`);
+    }
