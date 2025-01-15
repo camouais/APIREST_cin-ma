@@ -15,7 +15,6 @@ body {
     /* margin: 0; Supprime toute marge extérieure */
     background-color: #141e30;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    /* position: fixed; */
     width: 100%;
     z-index: 100;
 }
