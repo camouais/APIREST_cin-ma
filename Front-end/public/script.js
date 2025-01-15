@@ -179,7 +179,7 @@ async function fetchMyProgrammations() {
             const programmations = data.data;
             const tableHead = document.getElementById('programmationTableHead');
             const tableBody = document.getElementById('programmationTableBody');
-            
+
             tableHead.innerHTML = `<tr>
                 <th>ID Projection</th>
                 <th>ID Film</th>
@@ -188,7 +188,7 @@ async function fetchMyProgrammations() {
                 <th>Jours de Semaine</th>
                 <th>Heure Début</th>
             </tr>`;
-            tableBody.innerHTML = ''; 
+            tableBody.innerHTML = '';
 
             programmations.forEach(programmation => {
                 const row = document.createElement('tr');

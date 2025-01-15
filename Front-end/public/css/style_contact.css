@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #2c3e50, #4ca1af); /*Dégradé bleu*/
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
     color: white;
     display: flex;
     justify-content: center;
@@ -10,14 +10,68 @@ body {
     min-height: 100vh;
 }
 
-/*Cadre*/
+/*Barre de navigation en haut*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #141e30;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e50914;
+    text-decoration: none;
+}
+
+.navbar .nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    color: #e50914;
+}
+
+.navbar .login-btn {
+    background-color: #e50914;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .login-btn:hover {
+    background-color: #b00610;
+}
+
+/*Formulaire*/
 .wrapper {
-    background: rgba(0, 0, 0, 0.8); /*Fond noir transparent*/
+    background: rgba(0, 0, 0, 0.8);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     width: 90%;
     max-width: 800px;
+    margin-top: 100px; /* Ajoute de l'espace sous la barre de navigation */
 }
 
 /*Titre*/
@@ -72,10 +126,10 @@ input:focus, select:focus, textarea:focus {
     border: 2px solid #007bff;
 }
 
-/*cadre message plus grand*/
+/*Cadre message plus grand*/
 textarea {
     resize: vertical;
-    height: 120px; /*Taille zone de message */
+    height: 120px;
 }
 
 /*Bouton de soumission*/
