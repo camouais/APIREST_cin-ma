@@ -122,19 +122,24 @@ async function createFilm() {
         });
 }
 
-async function fetchFilmsByCity() {
+async function fetchFilmsByArrondissement() {
+    const arrondissement = document.getElementById('arrondissementInput').value;
+
+    if (!arrondissement) {
+        alert('Veuillez entrer un arrondissement.');
+        return;
+    }
+
     try {
-        // console.log("ici fetchfilmsbycity---1");
-        const response = await fetch('/api/filmsCity'); // Call the API
-        // console.log("ici fetchfilmsbycity----2");
-        const data = await response.json(); 
+        const response = await fetch(`/api/filmsByArrondissement?arrondissement=${encodeURIComponent(arrondissement)}`);
+        const data = await response.json();
 
         if (data.success) {
             const films = data.data;
-            const tableHead = document.getElementById('FilmbyCityTableHead');
-            const tableBody = document.getElementById('FilmbyCityTableBody');
+            const tableHead = document.getElementById('FilmbyArrondissementTableHead');
+            const tableBody = document.getElementById('FilmbyArrondissementTableBody');
             tableHead.innerHTML = `<tr><th>Titre</th><th>Année</th><th>Réalisateur</th><th>Durée</th>
-            <th>Langue</th><th>Sous-titres</th><th>Age requise</th></tr>`;
+            <th>Langue</th><th>Sous-titres</th><th>Age minimum</th></tr>`;
             tableBody.innerHTML = '';
 
             films.forEach(film => {
@@ -150,7 +155,6 @@ async function fetchFilmsByCity() {
                 `;
                 tableBody.appendChild(row);
             });
-            // console.log(films)
         } else {
             console.error('Failed to fetch films:', data.message);
         }
@@ -158,6 +162,7 @@ async function fetchFilmsByCity() {
         console.error('Error fetching films:', error);
     }
 }
+
 
 async function fetchMyProgrammations() {
     try {
@@ -182,8 +187,6 @@ async function fetchMyProgrammations() {
                 <th>Date Fin</th>
                 <th>Jours de Semaine</th>
                 <th>Heure Début</th>
-                <th>Ville</th>
-                <th>ID Cinéma</th>
             </tr>`;
             tableBody.innerHTML = ''; 
 
@@ -196,7 +199,6 @@ async function fetchMyProgrammations() {
                     <td>${programmation.Date_fin}</td>
                     <td>${programmation.Jours_semaine}</td>
                     <td>${programmation.Heure_debut}</td>
-                    <td>${programmation.ID_cinema}</td>
                 `;
                 tableBody.appendChild(row);
             });
@@ -241,7 +243,6 @@ async function createProgrammation() {
         }
     } catch (error) {
         console.error('Error:', error);
-        alert('Une erreur s\'est produite lors de la création de la programmation.');
     }
 }
 
@@ -336,9 +337,3 @@ function openPopupCreerProgrammation() {
 function closePopup(popupId) {
     document.getElementById(popupId).classList.add("hidden");
 }
-
-// pour choisir l'année du film
-const currentYear = new Date().getFullYear();
-    for (let year = currentYear; year >= 1950; year--) {
-        document.write(`<option value="${year}">${year}</option>`);
-    }

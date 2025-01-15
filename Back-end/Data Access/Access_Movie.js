@@ -29,11 +29,18 @@ exports.getFilmsByCity = async (city) => {
 };
 */
 
-exports.getFilmsByCity = async (city) => {
-    console.log("Je passe par getFilmsByCity");
-    const [rows] = await pool.query('SELECT f.* FROM Film f, Programmation p WHERE f.ID_film = p.ID_film and p.ville = ?', [city]);
+exports.getFilmsByArrondissement = async (arrondissement) => {
+    const query = `
+        SELECT f.*
+        FROM Film f
+        JOIN Programmation p ON f.ID_film = p.ID_film
+        JOIN Cinema c ON p.ID_Cinema = c.ID_Cinema
+        WHERE c.Arrondissement = ?;
+    `;
+    const [rows] = await pool.query(query, [arrondissement]);
     return rows;
 };
+
 
 exports.getFilms = async () => {
     const [rows] = await pool.query('SELECT * FROM Film;');

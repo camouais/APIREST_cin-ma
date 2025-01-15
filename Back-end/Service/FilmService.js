@@ -17,8 +17,8 @@ exports.createFilm = async (film, userId) => {
 
 
 
-exports.getFilmsByCity = async (city) => {
-    return await Access_Film.getFilmsByCity(city);
+exports.getFilmsByArrondissement = async (arrondissement) => {
+    return await Access_Film.getFilmsByArrondissement(arrondissement);
 };
 
 exports.getFilms = async () => {

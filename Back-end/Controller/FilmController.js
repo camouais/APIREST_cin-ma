@@ -30,13 +30,21 @@ router.get('/films/mine', verifyToken, async (req, res) => {
     }
 });
 
-router.get('/filmsCity', async (req, res) => {
-    const decodedToken = req.decodedToken;
-    // console.log("je passe par /filmsCity");
+router.get('/filmsByArrondissement', async (req, res) => {
+    const arrondissement = req.query.arrondissement;
+
+    if (!arrondissement) {
+        return res.status(400).json({
+            success: false,
+            message: 'Arrondissement is required'
+        });
+    }
+
     try {
-        res.json({ success: true, data: await FilmService.getFilmsByCity()});
+        const films = await FilmService.getFilmsByArrondissement(arrondissement);
+        res.status(200).json({ success: true, data: films });
     } catch (error) {
-        console.error('Error fetching films in this city:', error);
+        console.error('Error fetching films by arrondissement:', error);
         res.status(500).json({ success: false, message: 'Internal Server Error' });
     }
 });

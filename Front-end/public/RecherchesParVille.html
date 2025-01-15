@@ -23,19 +23,20 @@
 <!-- Section Recherche -->
 <div class="wrapper">
     <div class="search-section">
-        <h2>Rechercher un film par ville</h2>
+        <h2>Rechercher un film par arrondissement</h2>
         <div class="search-bar">
-            <input type="text" placeholder="Entrez une ville...">
-            <button onclick="fetchFilmsByCity()">Rechercher</button>
+            <input type="number" placeholder="Entrez un arrondissement..." id="arrondissementInput">
+            <button onclick="fetchFilmsByArrondissement()">Rechercher</button>
             <br>
             <table>
-                <thead id="FilmbyCityTableHead">
+                <thead id="FilmbyArrondissementTableHead">
                 </thead>
-                <tbody id="FilmbyCityTableBody">
+                <tbody id="FilmbyArrondissementTableBody">
                 </tbody>
             </table>
         </div>
     </div>
+    
 </div>
 
 </body>
