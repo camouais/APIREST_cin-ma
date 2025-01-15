@@ -294,22 +294,31 @@ document.getElementById('loginBtn').addEventListener('click', () => {
 
 // éléments de style pour la page d'accueil pour le diaporama 
 
-let slideIndex = Math.floor(Math.random() * 9) + 1;
+let slideIndex = Math.floor(Math.random() * document.querySelectorAll('.slideshow-slide').length);
 showSlides();
 
 function showSlides() {
-    let slides = document.querySelectorAll('.slideshow-slide');
-    slides.forEach(slide => slide.style.display = 'none'); // Masque toutes les diapositives
+    console.log('Affichage de la diapositive', slideIndex); // Debugging
+    const slides = document.querySelectorAll('.slideshow-slide');
+    slides.forEach(slide => slide.style.display = 'none');
     slideIndex++;
-    if (slideIndex > slides.length) slideIndex = 1; // Revient au début
-    slides[slideIndex - 1].style.display = 'block'; // Affiche la diapositive actuelle
-    setTimeout(showSlides, 3000); // Change toutes les 10 secondes
+    if (slideIndex > slides.length) slideIndex = 1;
+    slides[slideIndex - 1].style.display = 'block';
+    setTimeout(showSlides, 3000);
 }
 
+
 function changeSlide(n) {
-    slideIndex += n - 1;
-    showSlides();
+    const slides = document.querySelectorAll('.slideshow-slide');
+    slideIndex += n; // Modifier l'index en fonction de la direction
+    if (slideIndex > slides.length) slideIndex = 1; // Boucle au début
+    if (slideIndex < 1) slideIndex = slides.length; // Boucle à la fin
+
+    slides.forEach(slide => slide.style.display = 'none'); // Masquer toutes les diapositives
+    slides[slideIndex - 1].style.display = 'block'; // Afficher la nouvelle diapositive
 }
+
+
 
 //page des prioritaires pour les pop up 
 
