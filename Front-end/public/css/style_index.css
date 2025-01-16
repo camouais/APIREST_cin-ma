@@ -233,8 +233,9 @@ color: white; /* Texte blanc pour correspondre à la charte graphique */
 }
 
 .film-card img {
-width: 100%;
-height: auto;
+    width: 100%; /* L'image prend toute la largeur de la carte */
+    height: 350px; /* Définir une hauteur uniforme */
+    object-fit: cover; /* Assure que l'image remplit l'espace sans déformer l'image */
 }
 
 .film-card .film-info {

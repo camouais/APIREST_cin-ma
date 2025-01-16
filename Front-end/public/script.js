@@ -207,7 +207,7 @@ async function fetchFilmsByArrondissement() {
                 // Ajoutez les informations de chaque film à la carte
                 filmCard.innerHTML = `
                     <div class="film-info">
-                         <img src="https://via.placeholder.com/250x350" alt="${film.Titre}">
+                         <img src="img/imagesindex/${film.Titre}.jpg" alt="${film.Titre}">
                         <h3>${film.Titre}</h3>
                         <p>Cinéma : ${film.Nom_cinema}</p>
                         <p>Jours de projection : ${film.Jours_semaine}</p>
