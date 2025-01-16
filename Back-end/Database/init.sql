@@ -111,3 +111,15 @@ INSERT INTO Utilisateur (Nom, Prenom, Email, Mot_de_passe, Role, ID_cinema)
 VALUES 
     ('Dupont', 'Jean', 'jean.dupont@example.com', '$2a$10$WDZzwOleUIwUcaA1lDHVj.9JbZbN/23mglLZxyl4O/.m3ytNDGDwi', 'admin', 1),
     ('Durand', 'Marie', 'marie.durand@example.com', '$2a$10$WDZzwOleUIwUcaA1lDHVj.9JbZbN/23mglLZxyl4O/.m3ytNDGDwi', 'proprietaire', 2);
+
+CREATE TABLE Acteur (
+ID_acteur INT AUTO_INCREMENT PRIMARY KEY,
+Nom_Acteur VARCHAR(50) NOT NULL,
+Prenom VARCHAR(50) NOT NULL,
+Roles VARCHAR(50) NOT NULL,
+ID_film INT,
+FOREIGN KEY (ID_film) REFERENCES Film(ID_film)
+);
+
+INSERT INTO Acteur VALUES (1, 'Woody', 'Allen', 'Alvy Singer', 1), (2, 'Diane', 'Keaton', 'Annie Hall',1),(3, 'Tony', 'Roberts', 'Rob', 1), (4, 'Carol', 'Kane', 'Allison',1),(5,'Paul', 'Simon', 'Tony Lacey', 1), (6, 'Shelley', 'Duvall','Pam',1), (7, 'Janet','Margolin', 'Robin',1);
+INSERT INTO Acteur VALUES (8, 'Jonathan', 'Pryce', 'Sam Lowry', 2), (9, 'Robert De', 'Niro', 'Harry Tuttle',2),(10, 'Kim', 'Greist ', 'Jill Layton', 2), (11, 'Katherine', 'Helmond', 'Ida Lowry, la mère de Sam',2),(12,'Ian', 'Richardson', 'M. Warren', 2);
