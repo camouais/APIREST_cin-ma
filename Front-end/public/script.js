@@ -122,23 +122,23 @@ async function fetchMyFilms() {
     }
 }
 async function deleteFilm(id) {
-    const token = localStorage.getItem('token'); 
-    console.log('Token:', token); 
+    const token = localStorage.getItem('token');
+    console.log('Token:', token);
 
     try {
         const response = await fetch(`/api/films/mine/${id}`, {
             method: 'DELETE',
             headers: {
-                'authorization': token, 
+                'authorization': token,
                 'Content-Type': 'application/json',
             }
         });
 
         const data = await response.json();
-        
+
         if (response.ok && data.success) {
             alert('Film supprimé avec succès');
-            fetchMyFilms(); 
+            fetchMyFilms();
         } else {
             console.log('Erreur lors de la suppression:', response);
             alert('Erreur lors de la suppression du film : ' + (data.message || 'Aucun message détaillé'));
@@ -196,25 +196,43 @@ async function fetchFilmsByArrondissement() {
 
         if (data.success) {
             const films = data.data;
-            const tableHead = document.getElementById('FilmbyArrondissementTableHead');
-            const tableBody = document.getElementById('FilmbyArrondissementTableBody');
-            tableHead.innerHTML = `<tr><th>Titre</th><th>Année</th><th>Réalisateur</th><th>Durée</th>
-            <th>Langue</th><th>Sous-titres</th><th>Age minimum</th></tr>`;
-            tableBody.innerHTML = '';
+            const filmListContainer = document.querySelector('.film-arrondissement'); // La section pour afficher les films
+            filmListContainer.innerHTML = '';  // Vide la liste avant d'ajouter les nouveaux films
 
             films.forEach(film => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${film.Titre}</td>
-                    <td>${film.Annee}</td>
-                    <td>${film.Nom_Realisateur}</td>
-                    <td>${film.Duree}</td>
-                    <td>${film.Langue}</td>
-                    <td>${film.Sous_titres}</td>
-                    <td>${film.Age_minimum}</td>
+                // Créez une nouvelle carte de film pour chaque film
+                const filmCard = document.createElement('div');
+                filmCard.classList.add('film-card');
+
+                // Ajoutez les informations de chaque film à la carte
+                filmCard.innerHTML = `
+                    <div class="film-info">
+                         <img src="https://via.placeholder.com/250x350" alt="${film.Titre}">
+                        <h3>${film.Titre}</h3>
+                        <p>Cinéma : ${film.Nom_cinema}</p>
+                        <p>Jours de projection : ${film.Jours_semaine}</p>
+                    </div>
+                    
+                    <div class="film-info-hover hidden">
+                        <h3>${film.Titre}</h3>
+                        <p>Cinéma : ${film.Nom_cinema}</p>
+                    </div>
                 `;
-                tableBody.appendChild(row);
+
+                filmCard.addEventListener('mouseover', () => {
+                    filmCard.querySelector('.film-info').classList.add('hidden');
+                    filmCard.querySelector('.film-info-hover').classList.remove('hidden');
+                });
+
+                filmCard.addEventListener('mouseout', () => {
+                    filmCard.querySelector('.film-info').classList.remove('hidden');
+                    filmCard.querySelector('.film-info-hover').classList.add('hidden');
+                });
+
+                // Ajoutez la carte de film au conteneur de films
+                filmListContainer.appendChild(filmCard);
             });
+
         } else {
             console.error('Failed to fetch films:', data.message);
         }
@@ -392,7 +410,7 @@ function handleSubmit(event) {
 
 async function fetchActeurByFilm() {
     const movie = document.getElementById('FilmInput').value;
-    
+
     if (!movie) {
         alert('Veuillez entrer un film.');
         return;

@@ -31,15 +31,16 @@ exports.getFilmsByCity = async (city) => {
 
 exports.getFilmsByArrondissement = async (arrondissement) => {
     const query = `
-        SELECT f.*
+        SELECT f.*, p.*, c.*
         FROM Film f
-        JOIN Programmation p ON f.ID_film = p.ID_film
-        JOIN Cinema c ON p.ID_Cinema = c.ID_Cinema
+                 JOIN Programmation p ON f.ID_film = p.ID_film
+                 JOIN Cinema c ON p.ID_Cinema = c.ID_Cinema
         WHERE c.Arrondissement = ?;
     `;
     const [rows] = await pool.query(query, [arrondissement]);
     return rows;
 };
+
 
 
 exports.getFilms = async () => {
