@@ -28,3 +28,7 @@ exports.getFilms = async () => {
 exports.getFilmsByOwner = async (userId) => {
     return await Access_Film.getFilmsByOwner(userId);
 };
+
+exports.getActeurByFilm = async (movie) => {
+    return await Access_Film.getActeurByFilm(movie);
+};

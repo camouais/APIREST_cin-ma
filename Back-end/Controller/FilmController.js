@@ -49,6 +49,25 @@ router.get('/filmsByArrondissement', async (req, res) => {
     }
 });
 
+router.get('/acteurByFilm', async (req, res) => {
+    const movie = req.query.movie;
+
+    if (!movie) {
+        return res.status(400).json({
+            success: false,
+            message: 'Film is required'
+        });
+    }
+
+    try {
+        const films = await FilmService.getActeurByFilm(movie);
+        res.status(200).json({ success: true, data: films });
+    } catch (error) {
+        console.error('Error fetching acteur by film:', error);
+        res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+});
+
 router.post('/filmcreate', verifyToken, async (req, res) => {
     const decodedToken = req.decodedToken;
 

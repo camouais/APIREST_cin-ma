@@ -354,3 +354,39 @@ function handleSubmit(event) {
     //Redirection
     window.location.href = 'index.html';
 }
+
+async function fetchActeurByFilm() {
+    const movie = document.getElementById('FilmInput').value;
+    
+    if (!movie) {
+        alert('Veuillez entrer un film.');
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/acteurByFilm?movie=${encodeURIComponent(movie)}`);
+        const data = await response.json();
+
+        if (data.success) {
+            const acteurs = data.data;
+            const tableHead = document.getElementById('ActeurbyFilmTableHead');
+            const tableBody = document.getElementById('ActeurbyFilmTableBody');
+            tableHead.innerHTML = `<tr><th>Nom</th><th>Prénom</th><th>Role</th></tr>`;
+            tableBody.innerHTML = '';
+
+            acteurs.forEach(acteur => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${acteur.Nom_Acteur}</td>
+                    <td>${acteur.Prenom}</td>
+                    <td>${acteur.Roles}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        } else {
+            console.error('Failed to fetch acteurs:', data.message);
+        }
+    } catch (error) {
+        console.error('Error fetching acteurs:', error);
+    }
+}

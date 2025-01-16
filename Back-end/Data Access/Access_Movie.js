@@ -47,3 +47,13 @@ exports.getFilms = async () => {
     return rows;
 };
 
+exports.getActeurByFilm = async (movie) => {
+    const query = `
+        SELECT a.Nom_Acteur, a.prenom, a.roles 
+        FROM Film f 
+        JOIN Acteur a ON f.ID_film = a.ID_Film
+        WHERE f.Titre = ?;
+    `;
+    const [row] = await pool.query(query, [movie]);
+};
+

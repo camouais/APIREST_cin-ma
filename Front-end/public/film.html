@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZoomCiné - Recherches de film par ville</title>
+    <title>ZoomCiné - Films</title>
     <link rel="stylesheet" href="css/style_rech_ville.css">
 
 </head>
@@ -19,8 +19,25 @@
     </div>
     <a href="login.html" class="login-btn">Se connecter</a>
 </div>
+<div id="films-container"></div>
 
+<div class="wrapper">
+    <div class="search-section">
+        <h2>Liste d'acteurs pour un film</h2>
+        <div class="search-bar">
+            <input type="string" placeholder="Entrez un film ..." id="FilmInput">
+            <button onclick="fetchActeurByFilm()">Rechercher</button>
+            <br>
+            <table>
+                <thead id="ActeurbyFilmTableHead">
+                </thead>
+                <tbody id="ActeurbyFilmTableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
 
+</div>
 
 </body>
 <script src="script.js"></script>
