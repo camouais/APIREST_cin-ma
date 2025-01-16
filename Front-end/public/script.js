@@ -49,39 +49,15 @@ async function fetchFilms() {
 
                 // Ajoutez les informations de chaque film à la carte
                 filmCard.innerHTML = `
+                    <img src="img/imagesindex/${film.Titre}.jpg" alt="${film.Titre}">
                     <div class="film-info">
-                         <img src="img/imagesindex/${film.Titre}.jpg" alt="${film.Titre}">
                         <h3>${film.Titre}</h3>
-                        <p>Cinéma : ${film.Nom_cinema}</p>
-                        <p>Jours de projection : ${film.Jours_semaine}</p>
-                    </div>
-                    
-                    <div class="film-info-hover hidden">
-                        <h3>${film.Titre}</h3>
-                        <p>Année : ${film.Annee}</p>
-                        <p>Réalisateur : ${film.Nom_Realisateur}</p>
-                        <p>Durée : ${film.Duree}</p>
-                        <p>Langue : ${film.Langue}</p>
-                        <p>Sous-titres : ${film.Sous_titres}</p>
-                        <p>Age Minimum : ${film.Age_minimum}</p>
-                        <h3>Projection</h3>
-                        <p>Cinéma : ${film.Nom_cinema}</p>
-                        <p>Adresse : ${film.Adresse}</p>
-                        <p>Jours de projection : ${film.Jours_semaine}</p>
-                        <p>Heure : ${film.Heure_debut}</p>
+
+                        <p>Année: ${film.Annee}</p> <!-- Année -->
                     </div>
                 `;
 
-                filmCard.addEventListener('mouseover', () => {
-                    filmCard.querySelector('.film-info').classList.add('hidden');
-                    filmCard.querySelector('.film-info-hover').classList.remove('hidden');
-                });
-
-                filmCard.addEventListener('mouseout', () => {
-                    filmCard.querySelector('.film-info').classList.remove('hidden');
-                    filmCard.querySelector('.film-info-hover').classList.add('hidden');
-                });
-
+                
                 // Ajoutez la carte de film au conteneur de films
                 filmListContainer.appendChild(filmCard);
             });
