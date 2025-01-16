@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZoomCiné - Films</title>
-    <link rel="stylesheet" href="css/style_rech_ville.css">
+    <link rel="stylesheet" href="css/style_index.css">
+    <script src="script.js"></script>
 
 </head>
 <body>
@@ -13,31 +14,19 @@
 <div class="navbar">
     <a href="index.html" class="logo">ZoomCiné</a>
     <div class="nav-links">
-        <a href="RecherchesParVille.html"> Recherches par arrondissement</a>
         <a href="contact.html">Contact</a>
     </div>
     <a href="login.html" class="login-btn">Se connecter</a>
 </div>
 <div id="films-container"></div>
 
-<div class="wrapper">
-    <div class="search-section">
-        <h2>Liste d'acteurs pour un film</h2>
-        <div class="search-bar">
-            <input type="string" placeholder="Entrez un film ..." id="FilmInput">
-            <button onclick="fetchActeurByFilm()">Rechercher</button>
-            <br>
-            <table>
-                <thead id="ActeurbyFilmTableHead">
-                </thead>
-                <tbody id="ActeurbyFilmTableBody">
-                </tbody>
-            </table>
-        </div>
-    </div>
+<div class="section-films">
+    <h2>Films</h2>
+    <div class="film-list">
 
+
+    </div>
 </div>
 
 </body>
-<script src="script.js"></script>
 </html>
