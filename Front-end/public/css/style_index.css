@@ -260,6 +260,11 @@ transform: scale(1.05);
 box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
 }
 
+.film-info-hover p {
+    line-height: 1.2;
+    margin: 5px 0;
+}
+
 
 /* Barre de recherche */
 .search-section {

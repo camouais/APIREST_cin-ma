@@ -215,7 +215,17 @@ async function fetchFilmsByArrondissement() {
                     
                     <div class="film-info-hover hidden">
                         <h3>${film.Titre}</h3>
+                        <p>Année : ${film.Annee}</p>
+                        <p>Réalisateur : ${film.Nom_Realisateur}</p>
+                        <p>Durée : ${film.Duree}</p>
+                        <p>Langue : ${film.Langue}</p>
+                        <p>Sous-titres : ${film.Sous_titres}</p>
+                        <p>Age Minimum : ${film.Age_minimum}</p>
+                        <h3>Projection</h3>
                         <p>Cinéma : ${film.Nom_cinema}</p>
+                        <p>Adresse : ${film.Adresse}</p>
+                        <p>Jours de projection : ${film.Jours_semaine}</p>
+                        <p>Heure : ${film.Heure_debut}</p>
                     </div>
                 `;
 
