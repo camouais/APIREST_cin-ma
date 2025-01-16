@@ -42,9 +42,33 @@ CREATE TABLE Film (
 
 INSERT INTO Film (Titre, Annee, Nom_Realisateur, Duree, Langue, Sous_titres, Age_minimum, ID_utilisateur)
 VALUES
- ('Annie Hall', 1977, 'Woody Allen', 93.00, 'Anglais', 'Aucun sous-titre', 13, 1),
- ('Brazil', 1984, 'Terry Gilliam', 142.00, 'Anglais', 'Aucun sous-titre', 16, 2);
-
+    ('Annie Hall', 1977, 'Woody Allen', 93.00, 'Anglais', 'Aucun sous-titre', 13, 1),
+    ('Brazil', 1984, 'Terry Gilliam', 142.00, 'Anglais', 'Aucun sous-titre', 16, 2),
+    ('Le Comte de Monte-Cristo', 2024, 'Matthieu Delaporte et Alexandre de La Patellière', 120.00, 'Français', 'Aucun sous-titre', 12, 3),
+    ('Dora et la Cité perdue', 2019, 'James Bobin', 102.00, 'Français', 'Aucun sous-titre', 10, 4),
+    ('Dune', 2021, 'Denis Villeneuve', 155.00, 'Anglais', 'Aucun sous-titre', 13, 5),
+    ('Intouchables', 2011, 'Eric Toledano et Olivier Nakache', 112.00, 'Français', 'Aucun sous-titre', 12, 6),
+    ('Mufasa', 2023, 'Barry Jenkins', 120.00, 'Français', 'Aucun sous-titre', 8, 7),
+    ('Le Parrain', 1972, 'Francis Ford Coppola et Mario Puzo', 175.00, 'Anglais', 'Aucun sous-titre', 16, 8),
+    ('Skyfall', 2012, 'Sam Mendes', 143.00, 'Anglais', 'Aucun sous-titre', 13, 9),
+    ('Inception', 2010, 'Christopher Nolan', 148.00, 'Anglais', 'Français', 12, 2),
+    ('The Dark Knight', 2008, 'Christopher Nolan', 152.00, 'Anglais', 'Français', 12, 2),
+    ('The Matrix', 1999, 'Lana Wachowski, Lilly Wachowski', 136.00, 'Anglais', 'Français', 16, 2),
+    ('Avengers Endgame', 2019, 'Anthony Russo, Joe Russo', 181.00, 'Anglais', 'Français', 12, 2),
+    ('Titanic', 1997, 'James Cameron', 195.00, 'Anglais', 'Français', 12, 2),
+    ('The Shawshank Redemption', 1994, 'Frank Darabont', 142.00, 'Anglais', 'Français', 12, 2),
+    ('Pulp Fiction', 1994, 'Quentin Tarantino', 154.00, 'Anglais', 'Français', 16, 2),
+    ('Interstellar', 2014, 'Christopher Nolan', 169.00, 'Anglais', 'Français', 12, 2),
+    ('Fight Club', 1999, 'David Fincher', 139.00, 'Anglais', 'Français', 16, 2),
+    ('Forrest Gump', 1994, 'Robert Zemeckis', 142.00, 'Anglais', 'Français', 12, 2),
+    ('Star Wars A New Hope', 1977, 'George Lucas', 121.00, 'Anglais', 'Français', 10, 2),
+    ('Jurassic Park', 1993, 'Steven Spielberg', 127.00, 'Anglais', 'Français', 10, 2),
+    ('Avatar', 2009, 'James Cameron', 162.00, 'Anglais', 'Français', 12, 2),
+    ('Gladiator', 2000, 'Ridley Scott', 155.00, 'Anglais', 'Français', 16, 2),
+    ('The Silence of the Lambs', 1991, 'Jonathan Demme', 118.00, 'Anglais', 'Français', 18, 2),
+    ('Back to the Future', 1985, 'Robert Zemeckis', 116.00, 'Anglais', 'Français', 10, 2),
+    ('The Prestige', 2006, 'Christopher Nolan', 130.00, 'Anglais', 'Français', 12, 2),
+    ('The Social Network', 2010, 'David Fincher', 120.00, 'Anglais', 'Français', 12, 2);
 
 
 

@@ -1,3 +1,34 @@
+// éléments de style pour la page index pour le diaporama
+
+let slideIndex = 0;
+
+document.addEventListener("DOMContentLoaded", function() {
+    showSlides();  // Lancer la première diapositive après le chargement complet de la page
+});
+
+function showSlides() {
+    const slides = document.querySelectorAll('.slideshow-slide');
+
+    if (slides.length === 0) {
+        console.error("Aucune diapositive trouvée");
+        return;
+    }
+
+    // Masquer toutes les diapositives
+    slides.forEach(slide => {
+        slide.classList.remove('active');  // Retirer la classe active de toutes les diapositives
+    });
+
+    // Incrémenter l'index pour passer à la diapositive suivante
+    slideIndex = (slideIndex + 1) % slides.length;  // Assure un retour à la première diapositive après la dernière
+    const currentSlide = slides[slideIndex];
+
+    // Ajouter la classe active à la diapositive actuelle pour afficher l'effet de fondu
+    currentSlide.classList.add('active');
+
+    setTimeout(showSlides, 3000);  // Changer la diapositive toutes les 3 secondes
+}
+
 
 //Fetch films depuis l'API
 async function fetchFilms() {
@@ -18,7 +49,7 @@ async function fetchFilms() {
 
                 // Ajoutez les informations de chaque film à la carte
                 filmCard.innerHTML = `
-                    <img src="https://via.placeholder.com/250x350" alt="${film.Titre}">
+                    <img src="img/imagesindex/${film.Titre}.jpg" alt="${film.Titre}">
                     <div class="film-info">
                         <h3>${film.Titre}</h3>
                         <p>Genre: ${film.Genre || 'Inconnu'}</p> <!-- Genre, si défini -->
@@ -322,31 +353,6 @@ document.getElementById('loginBtn').addEventListener('click', () => {
 });
 
 
-// éléments de style pour la page d'accueil pour le diaporama 
-
-let slideIndex = Math.floor(Math.random() * document.querySelectorAll('.slideshow-slide').length);
-showSlides();
-
-function showSlides() {
-    console.log('Affichage de la diapositive', slideIndex); // Debugging
-    const slides = document.querySelectorAll('.slideshow-slide');
-    slides.forEach(slide => slide.style.display = 'none');
-    slideIndex++;
-    if (slideIndex > slides.length) slideIndex = 1;
-    slides[slideIndex - 1].style.display = 'block';
-    setTimeout(showSlides, 3000);
-}
-
-
-function changeSlide(n) {
-    const slides = document.querySelectorAll('.slideshow-slide');
-    slideIndex += n; // Modifier l'index en fonction de la direction
-    if (slideIndex > slides.length) slideIndex = 1; // Boucle au début
-    if (slideIndex < 1) slideIndex = slides.length; // Boucle à la fin
-
-    slides.forEach(slide => slide.style.display = 'none'); // Masquer toutes les diapositives
-    slides[slideIndex - 1].style.display = 'block'; // Afficher la nouvelle diapositive
-}
 
 
 
