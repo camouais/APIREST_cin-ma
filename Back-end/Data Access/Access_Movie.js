@@ -57,3 +57,23 @@ exports.getActeurByFilm = async (movie) => {
     const [row] = await pool.query(query, [movie]);
 };
 
+exports.deleteFilmById = async (filmId) => {
+    try {
+        console.log('Suppression des programmations liées au film avec ID :', filmId);
+        await pool.query('DELETE FROM Programmation WHERE ID_film = ?', [filmId]);
+
+        console.log('Suppression du film avec ID :', filmId);
+        const result = await pool.query('DELETE FROM film WHERE ID_film = ?', [filmId]);
+
+        console.log('Résultat de la suppression du film :', result);
+
+        if (result) {
+            return { success: true };
+        } else {
+            return { success: false };
+        }
+    } catch (error) {
+        console.error('Erreur dans Access_Film.deleteFilmById :', error);
+        throw error; // Renvoyer l'erreur pour la gestion dans le service
+    }
+};

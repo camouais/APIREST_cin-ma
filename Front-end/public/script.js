@@ -64,6 +64,7 @@ async function fetchMyFilms() {
                 <th>Langue</th>
                 <th>Sous-titres</th>
                 <th>Age requis</th>
+                <th>Action</th>
                 </tr>`;
             tableBody.innerHTML = '';
 
@@ -77,6 +78,8 @@ async function fetchMyFilms() {
                     <td>${film.Langue}</td>
                     <td>${film.Sous_titres}</td>
                     <td>${film.Age_minimum}</td>
+                    <td><button class="btn btn-danger" onclick="deleteFilm(${film.ID_film})">Supprimer</button></td>
+                    <td></td>
                 `;
                 tableBody.appendChild(row);
             });
@@ -87,7 +90,33 @@ async function fetchMyFilms() {
         console.error('Error fetching films:', error);
     }
 }
+async function deleteFilm(id) {
+    const token = localStorage.getItem('token'); 
+    console.log('Token:', token); 
 
+    try {
+        const response = await fetch(`/api/films/mine/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'authorization': token, 
+                'Content-Type': 'application/json',
+            }
+        });
+
+        const data = await response.json();
+        
+        if (response.ok && data.success) {
+            alert('Film supprimé avec succès');
+            fetchMyFilms(); 
+        } else {
+            console.log('Erreur lors de la suppression:', response);
+            alert('Erreur lors de la suppression du film : ' + (data.message || 'Aucun message détaillé'));
+        }
+    } catch (error) {
+        console.error('Erreur lors de la suppression du film:', error);
+        alert('Erreur interne du serveur');
+    }
+}
 async function createFilm() {
     const data = new FormData(document.getElementById('filmForm'));
     const selectData = {

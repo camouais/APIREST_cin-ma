@@ -100,5 +100,22 @@ router.post('/filmcreate', verifyToken, async (req, res) => {
     }
 });
 
+router.delete('/films/mine/:id', verifyToken, async (req, res) => {
+    const filmId = req.params.id; 
+    console.log('ID du film à supprimer :', filmId);
 
+    try {
+        const result = await FilmService.deleteFilmById(filmId);
+        console.log('Résultat reçu du service :', result);
+
+        if (result.success) {
+            res.json({ success: true, message: 'Film supprimé avec succès' });
+        } else {
+            res.status(404).json({ success: false, message: 'Film introuvable ou déjà supprimé' });
+        }
+    } catch (error) {
+        console.error('Erreur lors de la suppression du film :', error);
+        res.status(500).json({ success: false, message: 'Erreur interne du serveur' });
+    }
+});
 module.exports = router;

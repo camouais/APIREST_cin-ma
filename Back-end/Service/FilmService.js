@@ -32,3 +32,19 @@ exports.getFilmsByOwner = async (userId) => {
 exports.getActeurByFilm = async (movie) => {
     return await Access_Film.getActeurByFilm(movie);
 };
+
+exports.deleteFilmById = async (filmId) => {
+    try {
+        const result = await Access_Film.deleteFilmById(filmId);
+        console.log('Résultat reçu d\'Access_Film :', result);
+
+        if (result) {
+            return { success: true };
+        } else {
+            return { success: false };
+        }
+    } catch (error) {
+        console.error('Erreur dans FilmService.deleteFilmById :', error);
+        throw error;
+    }
+};
