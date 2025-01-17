@@ -38,8 +38,15 @@ async function fetchFilms() {
 
         if (data.success) {
             // console.log("données succès")
-            const films = data.data;  // Les films récupérés de l'API
-            const filmListContainer = document.querySelector('.film-list'); // La section pour afficher les films
+            var films = data.data;  // Les films récupérés de l'API
+            var filmListContainer;
+
+            if (document.querySelector('.film-list') !== null) {
+                filmListContainer = document.querySelector('.film-list'); // La section pour afficher les films
+            } else {
+                filmListContainer = document.querySelector('.filmF-list'); // La section pour afficher les films
+                films = data.data.slice(0, 5);  // Limite les films aux 5 premiers éléments
+            }
             filmListContainer.innerHTML = '';  // Vide la liste avant d'ajouter les nouveaux films
 
             films.forEach(film => {

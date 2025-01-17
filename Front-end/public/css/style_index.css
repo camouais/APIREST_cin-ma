@@ -204,7 +204,7 @@ text-transform: uppercase; /* Style pour accentuer le titre */
 letter-spacing: 2px;
 }
 
-.film-list {
+.film-list, .filmF-list {
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
