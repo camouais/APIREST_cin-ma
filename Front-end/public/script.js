@@ -97,6 +97,7 @@ async function fetchMyFilms() {
             const tableBody = document.getElementById('filmTableBody');
             tableHead.innerHTML = `<tr>
                 <th>Titre</th>
+                <th>Identifiant</th>
                 <th>Année</th>
                 <th>Réalisateur
                 </th><th>Durée</th>
@@ -111,6 +112,7 @@ async function fetchMyFilms() {
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${film.Titre}</td>
+                    <td>${film.ID_film}</td>
                     <td>${film.Annee}</td>
                     <td>${film.Nom_Realisateur}</td>
                     <td>${film.Duree}</td>
